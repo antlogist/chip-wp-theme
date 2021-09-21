@@ -1,0 +1,26 @@
+{
+  "name": "overlapping-design-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antlogist/overlapping-design-theme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antlogist/overlapping-design-theme/issues"
+  },
+  "homepage": "https://github.com/antlogist/overlapping-design-theme#readme",
+  "devDependencies": {
+    "laravel-mix": "^6.0.31",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.41.1",
+    "sass-loader": "^12.1.0"
+  }
+}
