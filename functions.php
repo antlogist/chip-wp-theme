@@ -22,6 +22,9 @@ include( get_template_directory() . '/inc/REST/rest_menu.php');
 //Theme features
 add_action('after_setup_theme', 'overlap_theme_support');
 
+//Menu depth
+add_action( 'admin_enqueue_scripts', 'menu_depth' );
+
 //Add viewport
 add_action( 'wp_head', 'add_viewport_meta_tag' , '1' );
 

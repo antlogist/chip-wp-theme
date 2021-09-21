@@ -17,23 +17,51 @@ import Request from "../Classes/Request.js";
 
       const ul = document.createElement("ul");
       ul.id = "navMainUl";
+      
+      const children = {};
 
       resp.map((item) => {
 
         if (!parseInt(item.menu_item_parent)) {
           const navItem = `
-            <li class="${currentLocation === item.url ? "current " : ''}d-flex">
+            <li data-id="${item.ID}" class="${currentLocation === item.url ? "current " : ''}d-flex li-nav">
               <a href="${item.url}" class="px-3 text-uppercase">${item.title}</a>
             </li>
           `;
           ul.insertAdjacentHTML("beforeEnd", navItem);
+        } else {
+          
+          children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
+            
+          children[item.menu_item_parent].push({
+            id: item.ID,
+            parentId: item.menu_item_parent,
+            url: item.url,
+            title: item.title
+          });
         }
       })
+      
+      console.log(children);
       navMainWrapper.insertAdjacentElement("afterBegin", ul);
 
       //Remove opacity from wrapper
       navMainWrapper.classList.remove("opacity-0");
       navMainWrapper.classList.add("opacity-100");
+      
+      if (Object.keys(children).length !== 0) {
+        const lis = document.getElementsByClassName("li-nav");
+
+        [...lis].map((li)=>{
+          const id = li.dataset.id;
+          for(const child in children) {
+            if(child === id) {
+              li.classList.add("parent");
+            }
+          }
+        }) 
+      }
+      
     });
   }
 

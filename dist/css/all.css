@@ -188,6 +188,7 @@ nav ul li {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 nav ul li.current {
   background-color: #000;
@@ -197,6 +198,21 @@ nav ul li.current a {
 }
 nav ul li.current a:hover {
   color: #ffff00;
+}
+nav ul li.current.parent a::after {
+  border-top-color: #ffff00;
+}
+nav ul li.parent a::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  margin-top: -2px;
+  height: 4px;
+  width: 4px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
 }
 nav ul li a {
   font-weight: bold;

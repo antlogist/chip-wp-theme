@@ -2096,6 +2096,18 @@ var __webpack_exports__ = {};
   \****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 (function () {
@@ -2113,16 +2125,40 @@ __webpack_require__.r(__webpack_exports__);
       var currentLocation = window.location.href;
       var ul = document.createElement("ul");
       ul.id = "navMainUl";
+      var children = {};
       resp.map(function (item) {
         if (!parseInt(item.menu_item_parent)) {
-          var navItem = "\n            <li class=\"".concat(currentLocation === item.url ? "current " : '', "d-flex\">\n              <a href=\"").concat(item.url, "\" class=\"px-3 text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
+          var navItem = "\n            <li data-id=\"".concat(item.ID, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "d-flex li-nav\">\n              <a href=\"").concat(item.url, "\" class=\"px-3 text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
           ul.insertAdjacentHTML("beforeEnd", navItem);
+        } else {
+          children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
+          children[item.menu_item_parent].push({
+            id: item.ID,
+            parentId: item.menu_item_parent,
+            url: item.url,
+            title: item.title
+          });
         }
       });
+      console.log(children);
       navMainWrapper.insertAdjacentElement("afterBegin", ul); //Remove opacity from wrapper
 
       navMainWrapper.classList.remove("opacity-0");
       navMainWrapper.classList.add("opacity-100");
+
+      if (Object.keys(children).length !== 0) {
+        var lis = document.getElementsByClassName("li-nav");
+
+        _toConsumableArray(lis).map(function (li) {
+          var id = li.dataset.id;
+
+          for (var child in children) {
+            if (child === id) {
+              li.classList.add("parent");
+            }
+          }
+        });
+      }
     });
   };
 
