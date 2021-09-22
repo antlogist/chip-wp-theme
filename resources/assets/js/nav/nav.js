@@ -16,6 +16,7 @@ import Request from "../Classes/Request.js";
       const currentLocation = window.location.href;
 
       const ul = document.createElement("ul");
+      ul.classList.add("nav-ul-main");
       ul.id = "navMainUl";
 
       const children = {};
@@ -24,8 +25,8 @@ import Request from "../Classes/Request.js";
 
         if (!parseInt(item.menu_item_parent)) {
           const navItem = `
-            <li data-id="${item.ID}" class="${currentLocation === item.url ? "current " : ''}d-flex li-nav">
-              <a href="${item.url}" class="px-3 text-uppercase">${item.title}</a>
+            <li data-id="${item.ID}" class="li-nav">
+              <a href="${item.url}" class="${currentLocation === item.url ? "current " : ''}nav-link text-uppercase">${item.title}</a>
             </li>
           `;
           ul.insertAdjacentHTML("beforeEnd", navItem);
@@ -42,7 +43,6 @@ import Request from "../Classes/Request.js";
         }
       })
 
-      console.log(children);
       navMainWrapper.insertAdjacentElement("afterBegin", ul);
 
       //Remove opacity from wrapper
@@ -73,8 +73,8 @@ import Request from "../Classes/Request.js";
 
         children[el.dataset.id].map((item) => {
           const navItemChild = `
-          <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
-            <a href="${item.url}" class="text-uppercase">${item.title}</a>
+          <li data-id="${item.id}" class="li-nav-child">
+            <a href="${item.url}" class="${currentLocation === item.url ? "current " : ''}text-uppercase">${item.title}</a>
           </li>
         `;
           ul.insertAdjacentHTML("beforeEnd", navItemChild);
@@ -83,6 +83,23 @@ import Request from "../Classes/Request.js";
         el.appendChild(fragment);
       }
     });
+
+
+    navMainWrapper.addEventListener("click", function (e) {
+      const el = e.target;
+      if (el.classList.contains("parent-link")) {
+        e.preventDefault();
+        const submenu = el.nextElementSibling;
+        switch (submenu.classList.contains("show")) {
+          case false:
+            submenu.classList.add("show");
+            break;
+          default:
+            submenu.classList.remove("show");
+        }
+      }
+    });
+
   }
 
   BASEOBJECT.nav.toggleButton = function () {
