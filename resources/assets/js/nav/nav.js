@@ -26,7 +26,7 @@ import Request from "../Classes/Request.js";
         if (!parseInt(item.menu_item_parent)) {
           const navItem = `
             <li data-id="${item.ID}" class="li-nav">
-              <a href="${item.url}" class="${currentLocation === item.url ? "current " : ''}nav-link text-uppercase">${item.title}</a>
+              <a href="${item.url}" data-id="${item.ID}" class="${currentLocation === item.url ? "current " : ''}nav-link text-uppercase">${item.title}</a>
             </li>
           `;
           ul.insertAdjacentHTML("beforeEnd", navItem);
@@ -70,6 +70,7 @@ import Request from "../Classes/Request.js";
         const fragment = document.createDocumentFragment();
         const ul = document.createElement("ul");
         ul.classList.add("ul-nav-child");
+        ul.dataset.id = el.dataset.id
 
         children[el.dataset.id].map((item) => {
           const navItemChild = `
@@ -87,6 +88,15 @@ import Request from "../Classes/Request.js";
 
     navMainWrapper.addEventListener("click", function (e) {
       const el = e.target;
+      
+      const submenus = document.querySelectorAll(".ul-nav-child");
+      [...submenus].map((submenu)=>{
+        if(submenu.dataset.id !== el.dataset.id) {
+          submenu.classList.remove("show");
+        }
+      })
+
+      //Parent link click
       if (el.classList.contains("parent-link")) {
         e.preventDefault();
         const submenu = el.nextElementSibling;
