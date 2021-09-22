@@ -65,11 +65,28 @@ import Mouse from "../Classes/Mouse.js";
 
       //Show children on hover
       const mouse = new Mouse();
-      mouse.onMouseOver(navMainWrapper, "li", function (el) {
-        console.log("Over" + el.dataset.id);
+      mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
+        if (children[el.dataset.id]) {
+          
+          const fragment = document.createDocumentFragment();
+          const ul = document.createElement("ul");
+          ul.classList.add("ul-nav-child");
+          
+          children[el.dataset.id].map((item)=>{
+            const navItemChild = `
+            <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
+              <a href="${item.url}" class="px-3 text-uppercase">${item.title}</a>
+            </li>
+          `;
+            ul.insertAdjacentHTML("beforeEnd", navItemChild);
+          })
+          fragment.appendChild(ul);
+          el.appendChild(fragment);
+        }
       });
       mouse.onMouseOut(navMainWrapper, function (el) {
-        console.log("Out" + el.dataset.id);
+        const ulChild = document.querySelector(".ul-nav-child");
+        ulChild.remove();
       });
     });
   }

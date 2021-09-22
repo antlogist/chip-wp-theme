@@ -2225,39 +2225,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
       var mouse = new _Classes_Mouse_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-      mouse.onMouseOver(navMainWrapper, "li", function (el) {
-        console.log("Over" + el.dataset.id);
+      mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
+        if (children[el.dataset.id]) {
+          var fragment = document.createDocumentFragment();
+
+          var _ul = document.createElement("ul");
+
+          _ul.classList.add("ul-nav-child");
+
+          children[el.dataset.id].map(function (item) {
+            var navItemChild = "\n            <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n              <a href=\"").concat(item.url, "\" class=\"px-3 text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
+
+            _ul.insertAdjacentHTML("beforeEnd", navItemChild);
+          });
+          fragment.appendChild(_ul);
+          el.appendChild(fragment);
+        }
       });
       mouse.onMouseOut(navMainWrapper, function (el) {
-        console.log("Out" + el.dataset.id);
-      }); //      let currentEl = null;
-      //      navMainWrapper.onmouseover = function (e) {
-      //        if (currentEl) return;
-      //        let target = e.target.closest("li");
-      //        if (!target) return;
-      //        if (!navMainWrapper.contains(target)) return;
-      //        currentEl = target;
-      //        onEnter(currentEl);
-      //      }
-      //      navMainWrapper.onmouseout = function (e) {
-      //        if (!currentEl) return;
-      //        let relatedTarget = e.relatedTarget;
-      //        while (relatedTarget) {
-      //          if (relatedTarget == currentEl) return;
-      //          relatedTarget = relatedTarget.parentNode;
-      //        }
-      //        // we left the <td>. really.
-      //        onLeave(currentEl);
-      //        currentEl = null;
-      //      }
-      //
-      //      function onEnter(el) {
-      //        console.log("Enter" + el.dataset.id);
-      //      }
-      //
-      //      function onLeave(el) {
-      //        console.log("Leave" + el.dataset.id);
-      //      }
+        var ulChild = document.querySelector(".ul-nav-child");
+        ulChild.remove();
+      });
     });
   };
 
