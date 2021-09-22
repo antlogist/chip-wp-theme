@@ -1,5 +1,4 @@
 import Request from "../Classes/Request.js";
-import Mouse from "../Classes/Mouse.js";
 
 (function () {
   "use strict";
@@ -58,19 +57,31 @@ import Mouse from "../Classes/Mouse.js";
           for (const child in children) {
             if (child === id) {
               li.classList.add("parent");
+              const a = li.children;
+              a[0].classList.add("parent-link");
+              submenuRender(li);
             }
           }
         })
       }
 
-      //Show children on hover
-      const mouse = new Mouse();
-      mouse.onMouseOver(navMainWrapper, "li", function (el) {
-        console.log("Over" + el.dataset.id);
-      });
-      mouse.onMouseOut(navMainWrapper, function (el) {
-        console.log("Out" + el.dataset.id);
-      });
+      //Submenu template
+      function submenuRender(el) {
+        const fragment = document.createDocumentFragment();
+        const ul = document.createElement("ul");
+        ul.classList.add("ul-nav-child");
+
+        children[el.dataset.id].map((item) => {
+          const navItemChild = `
+          <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
+            <a href="${item.url}" class="text-uppercase">${item.title}</a>
+          </li>
+        `;
+          ul.insertAdjacentHTML("beforeEnd", navItemChild);
+        })
+        fragment.appendChild(ul);
+        el.appendChild(fragment);
+      }
     });
   }
 

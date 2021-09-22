@@ -187,7 +187,7 @@ nav ul {
 nav ul li {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 5px 0 5px;
   position: relative;
 }
 nav ul li.current {
@@ -202,7 +202,10 @@ nav ul li.current a:hover {
 nav ul li.current.parent a::after {
   border-top-color: #ffff00;
 }
-nav ul li.parent a::after {
+nav ul li.parent a.parent-link {
+  position: relative;
+}
+nav ul li.parent a.parent-link::after {
   content: "";
   position: absolute;
   right: 1px;
@@ -213,6 +216,9 @@ nav ul li.parent a::after {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #000;
+}
+nav ul li.parent.current a.parent-link::after {
+  border-top-color: #ffff00;
 }
 nav ul li a {
   font-weight: bold;
@@ -282,6 +288,41 @@ nav ul li a:hover {
 
 .nav-wrapper a {
   line-height: 44px;
+}
+
+li.parent ul.ul-nav-child {
+  background-color: #ffff00;
+  background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 101;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+@media (min-width: 767px) {
+  li.parent ul.ul-nav-child {
+    position: absolute;
+    min-width: 250px;
+    max-width: 450px;
+    left: 0;
+    top: 43px;
+  }
+}
+li.parent ul.ul-nav-child li.li-nav-child {
+  display: block;
+  width: 100%;
+}
+li.parent ul.ul-nav-child li.li-nav-child a {
+  display: block;
+  width: 100%;
+  line-height: normal;
+  min-height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #000;
+}
+li.parent ul.ul-nav-child li.li-nav-child.current a {
+  color: #ffff00;
 }
 
 #frontPageCarousel {

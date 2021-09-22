@@ -218,7 +218,7 @@ nav {
     li {
       list-style-type: none;
       margin: 0;
-      padding: 0;
+      padding: 0 5px 0 5px;
       position: relative;
 
       &.current {
@@ -231,6 +231,7 @@ nav {
             color: $color;
           }
         }
+
         &.parent {
           a {
             &::after {
@@ -241,7 +242,9 @@ nav {
       }
 
       &.parent {
-        a {
+        a.parent-link {
+          position: relative;
+
           &::after {
             content: "";
             position: absolute;
@@ -253,6 +256,14 @@ nav {
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
             border-top: 4px solid #000;
+          }
+        }
+
+        &.current {
+          a.parent-link {
+            &::after {
+              border-top-color: $color;
+            }
           }
         }
       }
@@ -336,6 +347,48 @@ nav {
 
 .nav-wrapper a {
   line-height: 44px;
+}
+
+//Children
+li.parent {
+  ul.ul-nav-child {
+    background-color: $color;
+    background: linear-gradient(to bottom, rgba(255, 247, 0, 1) 0%, rgba(255, 190, 0, 1) 100%);
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 101;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    @media (min-width: 767px) {
+      position: absolute;
+      min-width: 250px;
+      max-width: 450px;
+      left: 0;
+      top: 43px;
+    }
+
+    li.li-nav-child {
+      display: block;
+      width: 100%;
+
+      a {
+        display: block;
+        width: 100%;
+        line-height: normal;
+        min-height: auto;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        color: #000;
+      }
+
+      &.current {
+        a {
+          color: $color;
+        }
+      }
+    }
+  }
 }
 
 //Carousel
