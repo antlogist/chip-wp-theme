@@ -187,7 +187,7 @@ nav ul {
 nav ul li {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 0 5px 0 5px;
   position: relative;
 }
 nav ul li.current {
@@ -216,6 +216,9 @@ nav ul li.parent a.parent-link::after {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #000;
+}
+nav ul li.parent.current a.parent-link::after {
+  border-top-color: #ffff00;
 }
 nav ul li a {
   font-weight: bold;
@@ -285,6 +288,35 @@ nav ul li a:hover {
 
 .nav-wrapper a {
   line-height: 44px;
+}
+
+li.parent ul.ul-nav-child {
+  background-color: #ffff00;
+  background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
+  min-width: 200px;
+  display: block;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 43px;
+  z-index: 101;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+li.parent ul.ul-nav-child li.li-nav-child {
+  display: block;
+  width: 100%;
+}
+li.parent ul.ul-nav-child li.li-nav-child a {
+  display: block;
+  width: 100%;
+  line-height: normal;
+  min-height: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #000;
+}
+li.parent ul.ul-nav-child li.li-nav-child.current a {
+  color: #ffff00;
 }
 
 #frontPageCarousel {

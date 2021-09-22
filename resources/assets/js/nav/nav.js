@@ -77,7 +77,7 @@ import Mouse from "../Classes/Mouse.js";
           children[el.dataset.id].map((item)=>{
             const navItemChild = `
             <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
-              <a href="${item.url}" class="px-3 text-uppercase">${item.title}</a>
+              <a href="${item.url}" class="text-uppercase">${item.title}</a>
             </li>
           `;
             ul.insertAdjacentHTML("beforeEnd", navItemChild);

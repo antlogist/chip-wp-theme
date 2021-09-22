@@ -2236,7 +2236,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _ul.classList.add("ul-nav-child");
 
           children[el.dataset.id].map(function (item) {
-            var navItemChild = "\n            <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n              <a href=\"").concat(item.url, "\" class=\"px-3 text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
+            var navItemChild = "\n            <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n              <a href=\"").concat(item.url, "\" class=\"text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
 
             _ul.insertAdjacentHTML("beforeEnd", navItemChild);
           });
