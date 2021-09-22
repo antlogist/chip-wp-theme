@@ -241,7 +241,8 @@ nav {
       }
 
       &.parent {
-        a {
+        a.parent-link {
+          position: relative;
           &::after {
             content: "";
             position: absolute;

@@ -58,6 +58,8 @@ import Mouse from "../Classes/Mouse.js";
           for (const child in children) {
             if (child === id) {
               li.classList.add("parent");
+              const a = li.children;
+              a[0].classList.add("parent-link");
             }
           }
         })
@@ -85,8 +87,10 @@ import Mouse from "../Classes/Mouse.js";
         }
       });
       mouse.onMouseOut(navMainWrapper, function (el) {
-        const ulChild = document.querySelector(".ul-nav-child");
-        ulChild.remove();
+        if (children[el.dataset.id]) {
+          const ulChild = document.querySelector(".ul-nav-child");
+          ulChild.remove(); 
+        }
       });
     });
   }

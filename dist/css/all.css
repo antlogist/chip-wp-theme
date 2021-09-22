@@ -202,7 +202,10 @@ nav ul li.current a:hover {
 nav ul li.current.parent a::after {
   border-top-color: #ffff00;
 }
-nav ul li.parent a::after {
+nav ul li.parent a.parent-link {
+  position: relative;
+}
+nav ul li.parent a.parent-link::after {
   content: "";
   position: absolute;
   right: 1px;

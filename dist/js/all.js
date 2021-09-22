@@ -2218,6 +2218,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           for (var child in children) {
             if (child === id) {
               li.classList.add("parent");
+              var a = li.children;
+              a[0].classList.add("parent-link");
             }
           }
         });
@@ -2243,8 +2245,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       });
       mouse.onMouseOut(navMainWrapper, function (el) {
-        var ulChild = document.querySelector(".ul-nav-child");
-        ulChild.remove();
+        if (children[el.dataset.id]) {
+          var ulChild = document.querySelector(".ul-nav-child");
+          ulChild.remove();
+        }
       });
     });
   };
