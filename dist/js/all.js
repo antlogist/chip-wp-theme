@@ -324,6 +324,269 @@ var Request = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/assets/js/baseObject.js":
+/*!*******************************************!*\
+  !*** ./resources/assets/js/baseObject.js ***!
+  \*******************************************/
+/***/ (() => {
+
+(function () {
+  "use strict";
+
+  window.BASEOBJECT = {
+    nav: {},
+    buttons: {},
+    frontPageCarousel: {}
+  };
+})();
+
+/***/ }),
+
+/***/ "./resources/assets/js/buttons/buttons.js":
+/*!************************************************!*\
+  !*** ./resources/assets/js/buttons/buttons.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
+/* harmony import */ var _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Classes/Modal.js */ "./resources/assets/js/Classes/Modal.js");
+
+
+
+(function () {
+  "use strict";
+
+  BASEOBJECT.buttons.init = function () {
+    var body = document.body;
+    var modal = new _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    var template = "";
+    body.addEventListener("click", function (e) {
+      //About
+      if (e.target.id === "openModalAbout") {
+        var pageId = document.getElementById("openModalAbout").dataset.page_id;
+        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(pageId), function (err, resp) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+
+          template = "";
+          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"paragraphs-wrapper py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./about.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
+          modal.renderTemplate(template);
+        });
+      }
+
+      ; //Products
+
+      if (e.target.id === "openModalProducts") {
+        var _pageId = document.getElementById("openModalProducts").dataset.page_id;
+        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(_pageId), function (err, resp) {
+          if (err) {
+            console.log(err);
+            return;
+          }
+
+          template = "";
+          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"products-info py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./products.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
+          modal.renderTemplate(template);
+        });
+      } //Mail
+
+
+      if (e.target.id === "openModalMail") {
+        template = "";
+        template = "\n          <div class=\"container-fluid container-xxl\" id=\"messageContainer\">\n            <div class=\"contact-form-wrapper py-5\">\n              <h2 class=\"_modal-title\">Contact form</h2>\n              <form class=\"row needs-validation\" novalidate>\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputName\" class=\"form-label\">Name*</label>\n                    <input name=\"name\" type=\"text\" class=\"form-control\" id=\"inputName\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputPhoneNumber\" class=\"form-label\">Phone*</label>\n                    <input name=\"phone\" type=\"text\" class=\"form-control\" id=\"inputPhoneNumber\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputEmail\" class=\"form-label\">Email address*</label>\n                    <input name=\"email\" type=\"email\" class=\"form-control\" id=\"inputEmail\" aria-describedby=\"emailHelp\" required>\n                    <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputSuburb\" class=\"form-label\">Suburb</label>\n                    <input name=\"suburb\" type=\"text\" class=\"form-control\" id=\"inputSuburb\">\n                  </div>\n                </div>\n\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputMessage\" class=\"form-label\">Message*</label>\n                    <textarea name=\"message\" class=\"form-control\" id=\"inputMessage\" required></textarea>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"button-wrapper\">\n                    <button class=\"_btn text-uppercase\" id=\"buttonSendMail\">Submit</button>\n                  </div>\n                </div>\n              </form>\n            </div>\n          </div>";
+        modal.renderTemplate(template);
+      }
+    });
+  };
+})();
+
+/***/ }),
+
+/***/ "./resources/assets/js/carousel/carousel.js":
+/*!**************************************************!*\
+  !*** ./resources/assets/js/carousel/carousel.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../libs/bootstrap/js/dist/carousel */ "./resources/assets/libs/bootstrap/js/dist/carousel.js");
+/* harmony import */ var _libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0__);
+
+
+(function () {
+  "use strict";
+
+  BASEOBJECT.frontPageCarousel.init = function () {
+    var frontCarousel = new (_libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0___default())(document.getElementById("frontPageCarousel"), {
+      interval: 3000
+    });
+  };
+})();
+
+/***/ }),
+
+/***/ "./resources/assets/js/init.js":
+/*!*************************************!*\
+  !*** ./resources/assets/js/init.js ***!
+  \*************************************/
+/***/ (() => {
+
+(function () {
+  "use strict";
+
+  BASEOBJECT.nav.init();
+  BASEOBJECT.nav.toggleButton();
+  BASEOBJECT.buttons.init();
+  var body = document.body;
+
+  switch (body.id) {
+    case "frontPage":
+      BASEOBJECT.frontPageCarousel.init();
+  }
+})();
+
+/***/ }),
+
+/***/ "./resources/assets/js/nav/nav.js":
+/*!****************************************!*\
+  !*** ./resources/assets/js/nav/nav.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+
+(function () {
+  "use strict";
+
+  BASEOBJECT.nav.init = function () {
+    var navMainWrapper = document.getElementById("navMainWrapper");
+    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    request.get("".concat(baseUrl, "/wp-json/menus/v1/menu"), function (err, resp) {
+      if (err) {
+        console.log(err);
+        return;
+      }
+
+      var currentLocation = window.location.href;
+      var ul = document.createElement("ul");
+      ul.classList.add("nav-ul-main");
+      ul.id = "navMainUl";
+      var children = {};
+      resp.map(function (item) {
+        if (!parseInt(item.menu_item_parent)) {
+          var navItem = "\n            <li data-id=\"".concat(item.ID, "\" class=\"li-nav\">\n              <a href=\"").concat(item.url, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "nav-link text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
+          ul.insertAdjacentHTML("beforeEnd", navItem);
+        } else {
+          children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
+          children[item.menu_item_parent].push({
+            id: item.ID,
+            parentId: item.menu_item_parent,
+            url: item.url,
+            title: item.title
+          });
+        }
+      });
+      navMainWrapper.insertAdjacentElement("afterBegin", ul); //Remove opacity from wrapper
+
+      navMainWrapper.classList.remove("opacity-0");
+      navMainWrapper.classList.add("opacity-100");
+
+      if (Object.keys(children).length !== 0) {
+        var lis = document.getElementsByClassName("li-nav");
+
+        _toConsumableArray(lis).map(function (li) {
+          var id = li.dataset.id;
+
+          for (var child in children) {
+            if (child === id) {
+              li.classList.add("parent");
+              var a = li.children;
+              a[0].classList.add("parent-link");
+              submenuRender(li);
+            }
+          }
+        });
+      } //Submenu template
+
+
+      function submenuRender(el) {
+        var fragment = document.createDocumentFragment();
+        var ul = document.createElement("ul");
+        ul.classList.add("ul-nav-child");
+        children[el.dataset.id].map(function (item) {
+          var navItemChild = "\n          <li data-id=\"".concat(item.id, "\" class=\"li-nav-child\">\n            <a href=\"").concat(item.url, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "text-uppercase\">").concat(item.title, "</a>\n          </li>\n        ");
+          ul.insertAdjacentHTML("beforeEnd", navItemChild);
+        });
+        fragment.appendChild(ul);
+        el.appendChild(fragment);
+      }
+    });
+    navMainWrapper.addEventListener("click", function (e) {
+      var el = e.target;
+
+      if (el.classList.contains("parent-link")) {
+        e.preventDefault();
+        var submenu = el.nextElementSibling;
+
+        switch (submenu.classList.contains("show")) {
+          case false:
+            submenu.classList.add("show");
+            break;
+
+          default:
+            submenu.classList.remove("show");
+        }
+      }
+    });
+  };
+
+  BASEOBJECT.nav.toggleButton = function () {
+    var button = document.getElementById("navToggleButton");
+    var navMain = document.getElementById("navMainWrapper");
+    var body = document.body;
+    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    button.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      switch (navMain.classList.contains("active")) {
+        case true:
+          navMain.classList.remove("active");
+          button.classList.remove("active");
+          body.classList.remove("active");
+          break;
+
+        default:
+          navMain.classList.add("active");
+          button.classList.add("active");
+          body.classList.add("active");
+      }
+    });
+  };
+})();
+
+/***/ }),
+
 /***/ "./resources/assets/libs/bootstrap/js/dist/base-component.js":
 /*!*******************************************************************!*\
   !*** ./resources/assets/libs/bootstrap/js/dist/base-component.js ***!
@@ -2000,6 +2263,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   return SelectorEngine;
 });
 
+/***/ }),
+
+/***/ "./resources/assets/sass/app.scss":
+/*!****************************************!*\
+  !*** ./resources/assets/sass/app.scss ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
 /***/ })
 
 /******/ 	});
@@ -2028,7 +2304,42 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
 /******/ 		// getDefaultExport function for compatibility with non-harmony modules
@@ -2069,278 +2380,72 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/dist/js/all": 0,
+/******/ 			"dist/css/all": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkoverlapping_design_theme"] = self["webpackChunkoverlapping_design_theme"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!*******************************************!*\
-  !*** ./resources/assets/js/baseObject.js ***!
-  \*******************************************/
-(function () {
-  "use strict";
-
-  window.BASEOBJECT = {
-    nav: {},
-    buttons: {},
-    frontPageCarousel: {}
-  };
-})();
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-var __webpack_exports__ = {};
-/*!****************************************!*\
-  !*** ./resources/assets/js/nav/nav.js ***!
-  \****************************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
- //import Mouse from "../Classes/Mouse.js";
-
-(function () {
-  "use strict";
-
-  BASEOBJECT.nav.init = function () {
-    var navMainWrapper = document.getElementById("navMainWrapper");
-    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    request.get("".concat(baseUrl, "/wp-json/menus/v1/menu"), function (err, resp) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-
-      var currentLocation = window.location.href;
-      var ul = document.createElement("ul");
-      ul.id = "navMainUl";
-      var children = {};
-      resp.map(function (item) {
-        if (!parseInt(item.menu_item_parent)) {
-          var navItem = "\n            <li data-id=\"".concat(item.ID, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "d-flex li-nav\">\n              <a href=\"").concat(item.url, "\" class=\"px-3 text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
-          ul.insertAdjacentHTML("beforeEnd", navItem);
-        } else {
-          children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
-          children[item.menu_item_parent].push({
-            id: item.ID,
-            parentId: item.menu_item_parent,
-            url: item.url,
-            title: item.title
-          });
-        }
-      });
-      console.log(children);
-      navMainWrapper.insertAdjacentElement("afterBegin", ul); //Remove opacity from wrapper
-
-      navMainWrapper.classList.remove("opacity-0");
-      navMainWrapper.classList.add("opacity-100");
-
-      if (Object.keys(children).length !== 0) {
-        var lis = document.getElementsByClassName("li-nav");
-
-        _toConsumableArray(lis).map(function (li) {
-          var id = li.dataset.id;
-
-          for (var child in children) {
-            if (child === id) {
-              li.classList.add("parent");
-              var a = li.children;
-              a[0].classList.add("parent-link");
-              submenuRender(li);
-            }
-          }
-        });
-      } //Submenu template
-
-
-      function submenuRender(el) {
-        var fragment = document.createDocumentFragment();
-        var ul = document.createElement("ul");
-        ul.classList.add("ul-nav-child");
-        children[el.dataset.id].map(function (item) {
-          var navItemChild = "\n          <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n            <a href=\"").concat(item.url, "\" class=\"text-uppercase\">").concat(item.title, "</a>\n          </li>\n        ");
-          ul.insertAdjacentHTML("beforeEnd", navItemChild);
-        });
-        fragment.appendChild(ul);
-        el.appendChild(fragment);
-      } //Show children on hover
-      //      const mouse = new Mouse();
-      //      mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
-      //
-      //        if (children[el.dataset.id]) {
-      //          submenuRender(el);
-      //        }
-      //      });
-      //
-      //      mouse.onMouseOut(navMainWrapper, function (el) {
-      //        const ulChild = document.querySelector(".ul-nav-child");
-      //        if (children[el.dataset.id] && ulChild) {
-      //          //          const a = el.children[0];
-      //          ulChild.remove();
-      //        }
-      //      });
-      //
-      //
-      //      const onParentClick = function (e) {
-      //        const el = e.target;
-      //        const sibling = el.nextElementSibling;
-      //        if (el.classList.contains("parent-link") && el.getAttribute("href") === "#") {
-      //          e.preventDefault();
-      //          if (document.querySelector(".ul-nav-child") && sibling.classList.contains("ul-nav-child")) {
-      //            sibling.remove();
-      //          } else {
-      //            submenuRender(el.parentElement);
-      //          }
-      //        }
-      //      }
-      //
-      //      navMainWrapper.addEventListener("click", onParentClick);
-
-    });
-  };
-
-  BASEOBJECT.nav.toggleButton = function () {
-    var button = document.getElementById("navToggleButton");
-    var navMain = document.getElementById("navMainWrapper");
-    var body = document.body;
-    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    button.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      switch (navMain.classList.contains("active")) {
-        case true:
-          navMain.classList.remove("active");
-          button.classList.remove("active");
-          body.classList.remove("active");
-          break;
-
-        default:
-          navMain.classList.add("active");
-          button.classList.add("active");
-          body.classList.add("active");
-      }
-    });
-  };
-})();
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-var __webpack_exports__ = {};
-/*!**************************************************!*\
-  !*** ./resources/assets/js/carousel/carousel.js ***!
-  \**************************************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../libs/bootstrap/js/dist/carousel */ "./resources/assets/libs/bootstrap/js/dist/carousel.js");
-/* harmony import */ var _libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0__);
-
-
-(function () {
-  "use strict";
-
-  BASEOBJECT.frontPageCarousel.init = function () {
-    var frontCarousel = new (_libs_bootstrap_js_dist_carousel__WEBPACK_IMPORTED_MODULE_0___default())(document.getElementById("frontPageCarousel"), {
-      interval: 3000
-    });
-  };
-})();
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
-(() => {
-"use strict";
-var __webpack_exports__ = {};
-/*!************************************************!*\
-  !*** ./resources/assets/js/buttons/buttons.js ***!
-  \************************************************/
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
-/* harmony import */ var _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Classes/Modal.js */ "./resources/assets/js/Classes/Modal.js");
-
-
-
-(function () {
-  "use strict";
-
-  BASEOBJECT.buttons.init = function () {
-    var body = document.body;
-    var modal = new _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    var template = "";
-    body.addEventListener("click", function (e) {
-      //About
-      if (e.target.id === "openModalAbout") {
-        var pageId = document.getElementById("openModalAbout").dataset.page_id;
-        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(pageId), function (err, resp) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-
-          template = "";
-          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"paragraphs-wrapper py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./about.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
-          modal.renderTemplate(template);
-        });
-      }
-
-      ; //Products
-
-      if (e.target.id === "openModalProducts") {
-        var _pageId = document.getElementById("openModalProducts").dataset.page_id;
-        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(_pageId), function (err, resp) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-
-          template = "";
-          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"products-info py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./products.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
-          modal.renderTemplate(template);
-        });
-      } //Mail
-
-
-      if (e.target.id === "openModalMail") {
-        template = "";
-        template = "\n          <div class=\"container-fluid container-xxl\" id=\"messageContainer\">\n            <div class=\"contact-form-wrapper py-5\">\n              <h2 class=\"_modal-title\">Contact form</h2>\n              <form class=\"row needs-validation\" novalidate>\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputName\" class=\"form-label\">Name*</label>\n                    <input name=\"name\" type=\"text\" class=\"form-control\" id=\"inputName\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputPhoneNumber\" class=\"form-label\">Phone*</label>\n                    <input name=\"phone\" type=\"text\" class=\"form-control\" id=\"inputPhoneNumber\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputEmail\" class=\"form-label\">Email address*</label>\n                    <input name=\"email\" type=\"email\" class=\"form-control\" id=\"inputEmail\" aria-describedby=\"emailHelp\" required>\n                    <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputSuburb\" class=\"form-label\">Suburb</label>\n                    <input name=\"suburb\" type=\"text\" class=\"form-control\" id=\"inputSuburb\">\n                  </div>\n                </div>\n\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputMessage\" class=\"form-label\">Message*</label>\n                    <textarea name=\"message\" class=\"form-control\" id=\"inputMessage\" required></textarea>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"button-wrapper\">\n                    <button class=\"_btn text-uppercase\" id=\"buttonSendMail\">Submit</button>\n                  </div>\n                </div>\n              </form>\n            </div>\n          </div>";
-        modal.renderTemplate(template);
-      }
-    });
-  };
-})();
-})();
-
-// This entry need to be wrapped in an IIFE because it need to be isolated against other entry modules.
-(() => {
-/*!*************************************!*\
-  !*** ./resources/assets/js/init.js ***!
-  \*************************************/
-(function () {
-  "use strict";
-
-  BASEOBJECT.nav.init();
-  BASEOBJECT.nav.toggleButton();
-  BASEOBJECT.buttons.init();
-  var body = document.body;
-
-  switch (body.id) {
-    case "frontPage":
-      BASEOBJECT.frontPageCarousel.init();
-  }
-})();
-})();
-
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/baseObject.js")))
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/nav/nav.js")))
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/carousel/carousel.js")))
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/buttons/buttons.js")))
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/init.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/sass/app.scss")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
 /******/ })()
 ;
