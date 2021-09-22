@@ -210,6 +210,67 @@ var Modal = /*#__PURE__*/function () {
 
 /***/ }),
 
+/***/ "./resources/assets/js/Classes/Mouse.js":
+/*!**********************************************!*\
+  !*** ./resources/assets/js/Classes/Mouse.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Mouse)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Mouse = /*#__PURE__*/function () {
+  function Mouse() {
+    _classCallCheck(this, Mouse);
+
+    this.currentEl = null;
+  }
+
+  _createClass(Mouse, [{
+    key: "onMouseOver",
+    value: function onMouseOver(el, closest, cb) {
+      el.onmouseover = function (e) {
+        if (this.currentEl) return;
+        var target = e.target.closest(closest);
+        if (!target) return;
+        if (!el.contains(target)) return;
+        this.currentEl = target;
+        cb(this.currentEl);
+      };
+    }
+  }, {
+    key: "onMouseOut",
+    value: function onMouseOut(el, cb) {
+      el.onmouseout = function (e) {
+        if (!this.currentEl) return;
+        var relatedTarget = e.relatedTarget;
+
+        while (relatedTarget) {
+          if (relatedTarget == this.currentEl) return;
+          relatedTarget = relatedTarget.parentNode;
+        }
+
+        cb(this.currentEl);
+        this.currentEl = null;
+      };
+    }
+  }]);
+
+  return Mouse;
+}();
+
+
+
+/***/ }),
+
 /***/ "./resources/assets/js/Classes/Request.js":
 /*!************************************************!*\
   !*** ./resources/assets/js/Classes/Request.js ***!
@@ -2096,6 +2157,7 @@ var __webpack_exports__ = {};
   \****************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
+/* harmony import */ var _Classes_Mouse_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Classes/Mouse.js */ "./resources/assets/js/Classes/Mouse.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2107,6 +2169,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 
@@ -2158,7 +2221,43 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             }
           }
         });
-      }
+      } //Show children on hover
+
+
+      var mouse = new _Classes_Mouse_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
+      mouse.onMouseOver(navMainWrapper, "li", function (el) {
+        console.log("Over" + el.dataset.id);
+      });
+      mouse.onMouseOut(navMainWrapper, function (el) {
+        console.log("Out" + el.dataset.id);
+      }); //      let currentEl = null;
+      //      navMainWrapper.onmouseover = function (e) {
+      //        if (currentEl) return;
+      //        let target = e.target.closest("li");
+      //        if (!target) return;
+      //        if (!navMainWrapper.contains(target)) return;
+      //        currentEl = target;
+      //        onEnter(currentEl);
+      //      }
+      //      navMainWrapper.onmouseout = function (e) {
+      //        if (!currentEl) return;
+      //        let relatedTarget = e.relatedTarget;
+      //        while (relatedTarget) {
+      //          if (relatedTarget == currentEl) return;
+      //          relatedTarget = relatedTarget.parentNode;
+      //        }
+      //        // we left the <td>. really.
+      //        onLeave(currentEl);
+      //        currentEl = null;
+      //      }
+      //
+      //      function onEnter(el) {
+      //        console.log("Enter" + el.dataset.id);
+      //      }
+      //
+      //      function onLeave(el) {
+      //        console.log("Leave" + el.dataset.id);
+      //      }
     });
   };
 
