@@ -1,4 +1,5 @@
 import Request from "../Classes/Request.js";
+import Mouse from "../Classes/Mouse.js";
 
 (function () {
   "use strict";
@@ -17,7 +18,7 @@ import Request from "../Classes/Request.js";
 
       const ul = document.createElement("ul");
       ul.id = "navMainUl";
-      
+
       const children = {};
 
       resp.map((item) => {
@@ -30,9 +31,9 @@ import Request from "../Classes/Request.js";
           `;
           ul.insertAdjacentHTML("beforeEnd", navItem);
         } else {
-          
+
           children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
-            
+
           children[item.menu_item_parent].push({
             id: item.ID,
             parentId: item.menu_item_parent,
@@ -41,27 +42,35 @@ import Request from "../Classes/Request.js";
           });
         }
       })
-      
+
       console.log(children);
       navMainWrapper.insertAdjacentElement("afterBegin", ul);
 
       //Remove opacity from wrapper
       navMainWrapper.classList.remove("opacity-0");
       navMainWrapper.classList.add("opacity-100");
-      
+
       if (Object.keys(children).length !== 0) {
         const lis = document.getElementsByClassName("li-nav");
 
-        [...lis].map((li)=>{
+        [...lis].map((li) => {
           const id = li.dataset.id;
-          for(const child in children) {
-            if(child === id) {
+          for (const child in children) {
+            if (child === id) {
               li.classList.add("parent");
             }
           }
-        }) 
+        })
       }
-      
+
+      //Show children on hover
+      const mouse = new Mouse();
+      mouse.onMouseOver(navMainWrapper, "li", function (el) {
+        console.log("Over" + el.dataset.id);
+      });
+      mouse.onMouseOut(navMainWrapper, function (el) {
+        console.log("Out" + el.dataset.id);
+      });
     });
   }
 
