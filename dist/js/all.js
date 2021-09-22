@@ -2223,33 +2223,57 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             }
           }
         });
+      } //Submenu template
+
+
+      function submenuRender(el) {
+        var fragment = document.createDocumentFragment();
+        var ul = document.createElement("ul");
+        ul.classList.add("ul-nav-child", "opacity-0");
+        children[el.dataset.id].map(function (item) {
+          var navItemChild = "\n          <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n            <a href=\"").concat(item.url, "\" class=\"text-uppercase\">").concat(item.title, "</a>\n          </li>\n        ");
+          ul.insertAdjacentHTML("beforeEnd", navItemChild);
+        });
+        fragment.appendChild(ul);
+        el.appendChild(fragment);
+        setTimeout(function () {
+          ul.classList.remove("opacity-0");
+          ul.classList.add("opacity-100");
+        }, 1);
       } //Show children on hover
 
 
       var mouse = new _Classes_Mouse_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
       mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
         if (children[el.dataset.id]) {
-          var fragment = document.createDocumentFragment();
-
-          var _ul = document.createElement("ul");
-
-          _ul.classList.add("ul-nav-child");
-
-          children[el.dataset.id].map(function (item) {
-            var navItemChild = "\n            <li data-id=\"".concat(item.id, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "li-nav-child\">\n              <a href=\"").concat(item.url, "\" class=\"text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
-
-            _ul.insertAdjacentHTML("beforeEnd", navItemChild);
-          });
-          fragment.appendChild(_ul);
-          el.appendChild(fragment);
+          submenuRender(el);
         }
       });
       mouse.onMouseOut(navMainWrapper, function (el) {
-        if (children[el.dataset.id]) {
-          var ulChild = document.querySelector(".ul-nav-child");
+        var ulChild = document.querySelector(".ul-nav-child");
+
+        if (children[el.dataset.id] && ulChild) {
+          //          const a = el.children[0];
           ulChild.remove();
         }
       });
+
+      var onParentClick = function onParentClick(e) {
+        var el = e.target;
+        var sibling = el.nextElementSibling;
+
+        if (el.classList.contains("parent-link") && el.getAttribute("href") === "#") {
+          e.preventDefault();
+
+          if (document.querySelector(".ul-nav-child") && sibling.classList.contains("ul-nav-child")) {
+            sibling.remove();
+          } else {
+            submenuRender(el.parentElement);
+          }
+        }
+      };
+
+      navMainWrapper.addEventListener("click", onParentClick);
     });
   };
 

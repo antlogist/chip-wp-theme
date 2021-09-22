@@ -65,33 +65,61 @@ import Mouse from "../Classes/Mouse.js";
         })
       }
 
+      //Submenu template
+      function submenuRender(el) {
+        const fragment = document.createDocumentFragment();
+        const ul = document.createElement("ul");
+        ul.classList.add("ul-nav-child", "opacity-0");
+
+        children[el.dataset.id].map((item) => {
+          const navItemChild = `
+          <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
+            <a href="${item.url}" class="text-uppercase">${item.title}</a>
+          </li>
+        `;
+          ul.insertAdjacentHTML("beforeEnd", navItemChild);
+        })
+        fragment.appendChild(ul);
+        el.appendChild(fragment);
+        setTimeout(function () {
+          ul.classList.remove("opacity-0");
+          ul.classList.add("opacity-100");
+        }, 1);
+      }
+
       //Show children on hover
       const mouse = new Mouse();
       mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
+
         if (children[el.dataset.id]) {
-          
-          const fragment = document.createDocumentFragment();
-          const ul = document.createElement("ul");
-          ul.classList.add("ul-nav-child");
-          
-          children[el.dataset.id].map((item)=>{
-            const navItemChild = `
-            <li data-id="${item.id}" class="${currentLocation === item.url ? "current " : ''}li-nav-child">
-              <a href="${item.url}" class="text-uppercase">${item.title}</a>
-            </li>
-          `;
-            ul.insertAdjacentHTML("beforeEnd", navItemChild);
-          })
-          fragment.appendChild(ul);
-          el.appendChild(fragment);
+          submenuRender(el);
         }
       });
+
       mouse.onMouseOut(navMainWrapper, function (el) {
-        if (children[el.dataset.id]) {
-          const ulChild = document.querySelector(".ul-nav-child");
-          ulChild.remove(); 
+        const ulChild = document.querySelector(".ul-nav-child");
+        if (children[el.dataset.id] && ulChild) {
+          //          const a = el.children[0];
+          ulChild.remove();
         }
       });
+
+
+      const onParentClick = function (e) {
+        const el = e.target;
+        const sibling = el.nextElementSibling;
+        if (el.classList.contains("parent-link") && el.getAttribute("href") === "#") {
+          e.preventDefault();
+          if (document.querySelector(".ul-nav-child") && sibling.classList.contains("ul-nav-child")) {
+            sibling.remove();
+          } else {
+            submenuRender(el.parentElement);
+          }
+        }
+      }
+
+      navMainWrapper.addEventListener("click", onParentClick);
+
     });
   }
 

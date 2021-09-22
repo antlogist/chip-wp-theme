@@ -293,7 +293,8 @@ nav ul li a:hover {
 li.parent ul.ul-nav-child {
   background-color: #ffff00;
   background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
-  min-width: 200px;
+  min-width: 250px;
+  max-width: 450px;
   display: block;
   position: absolute;
   width: 100%;
