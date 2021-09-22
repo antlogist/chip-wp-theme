@@ -495,7 +495,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var children = {};
       resp.map(function (item) {
         if (!parseInt(item.menu_item_parent)) {
-          var navItem = "\n            <li data-id=\"".concat(item.ID, "\" class=\"li-nav\">\n              <a href=\"").concat(item.url, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "nav-link text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
+          var navItem = "\n            <li data-id=\"".concat(item.ID, "\" class=\"li-nav\">\n              <a href=\"").concat(item.url, "\" data-id=\"").concat(item.ID, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "nav-link text-uppercase\">").concat(item.title, "</a>\n            </li>\n          ");
           ul.insertAdjacentHTML("beforeEnd", navItem);
         } else {
           children[item.menu_item_parent] ? "" : children[item.menu_item_parent] = [];
@@ -534,6 +534,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var fragment = document.createDocumentFragment();
         var ul = document.createElement("ul");
         ul.classList.add("ul-nav-child");
+        ul.dataset.id = el.dataset.id;
         children[el.dataset.id].map(function (item) {
           var navItemChild = "\n          <li data-id=\"".concat(item.id, "\" class=\"li-nav-child\">\n            <a href=\"").concat(item.url, "\" class=\"").concat(currentLocation === item.url ? "current " : '', "text-uppercase\">").concat(item.title, "</a>\n          </li>\n        ");
           ul.insertAdjacentHTML("beforeEnd", navItemChild);
@@ -544,6 +545,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     });
     navMainWrapper.addEventListener("click", function (e) {
       var el = e.target;
+      var submenus = document.querySelectorAll(".ul-nav-child");
+
+      _toConsumableArray(submenus).map(function (submenu) {
+        if (submenu.dataset.id !== el.dataset.id) {
+          submenu.classList.remove("show");
+        }
+      }); //Parent link click
+
 
       if (el.classList.contains("parent-link")) {
         e.preventDefault();
