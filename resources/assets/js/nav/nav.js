@@ -1,5 +1,4 @@
 import Request from "../Classes/Request.js";
-import Mouse from "../Classes/Mouse.js";
 
 (function () {
   "use strict";
@@ -60,6 +59,7 @@ import Mouse from "../Classes/Mouse.js";
               li.classList.add("parent");
               const a = li.children;
               a[0].classList.add("parent-link");
+              submenuRender(li);
             }
           }
         })
@@ -69,7 +69,7 @@ import Mouse from "../Classes/Mouse.js";
       function submenuRender(el) {
         const fragment = document.createDocumentFragment();
         const ul = document.createElement("ul");
-        ul.classList.add("ul-nav-child", "opacity-0");
+        ul.classList.add("ul-nav-child");
 
         children[el.dataset.id].map((item) => {
           const navItemChild = `
@@ -81,45 +81,7 @@ import Mouse from "../Classes/Mouse.js";
         })
         fragment.appendChild(ul);
         el.appendChild(fragment);
-        setTimeout(function () {
-          ul.classList.remove("opacity-0");
-          ul.classList.add("opacity-100");
-        }, 1);
       }
-
-      //Show children on hover
-      const mouse = new Mouse();
-      mouse.onMouseOver(navMainWrapper, "li.li-nav", function (el) {
-
-        if (children[el.dataset.id]) {
-          submenuRender(el);
-        }
-      });
-
-      mouse.onMouseOut(navMainWrapper, function (el) {
-        const ulChild = document.querySelector(".ul-nav-child");
-        if (children[el.dataset.id] && ulChild) {
-          //          const a = el.children[0];
-          ulChild.remove();
-        }
-      });
-
-
-      const onParentClick = function (e) {
-        const el = e.target;
-        const sibling = el.nextElementSibling;
-        if (el.classList.contains("parent-link") && el.getAttribute("href") === "#") {
-          e.preventDefault();
-          if (document.querySelector(".ul-nav-child") && sibling.classList.contains("ul-nav-child")) {
-            sibling.remove();
-          } else {
-            submenuRender(el.parentElement);
-          }
-        }
-      }
-
-      navMainWrapper.addEventListener("click", onParentClick);
-
     });
   }
 

@@ -354,15 +354,19 @@ li.parent {
   ul.ul-nav-child {
     background-color: $color;
     background: linear-gradient(to bottom, rgba(255, 247, 0, 1) 0%, rgba(255, 190, 0, 1) 100%);
-    min-width: 250px;
-    max-width: 450px;
-    display: block;
-    position: absolute;
     width: 100%;
-    left: 0;
-    top: 43px;
+    display: block;
+    position: relative;
     z-index: 101;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    @media (min-width: 767px) {
+      position: absolute;
+      min-width: 250px;
+      max-width: 450px;
+      left: 0;
+      top: 43px;
+    }
 
     li.li-nav-child {
       display: block;
