@@ -24,7 +24,27 @@ wp_head(); ?>
 
 </script>
 
-<body <?php echo body_id(); body_class(); ?> style="background-image: url('./wp-content/themes/chip-wp-theme/images/bg.jpg')">
+<body <?php echo body_id(); body_class(); ?> style="background-image: url('<?php echo get_stylesheet_directory_uri(); ?>/images/bg.jpg')">
+
+  <!--Header-->
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <div class="d-flex h-100 align-items-center justify-content-center">
+            <img class="img-fluid py-2 py-sm-0" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" class="logo" alt="logo">
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="d-flex h-100 align-items-center justify-content-center">
+            <img class="img-fluid" src="<?php echo get_stylesheet_directory_uri(); ?>/images/atra_logo.png" class="logo" alt="logo">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--/Header-->
 
   <!--Nav-->
   <nav id="navMain">

@@ -21,6 +21,10 @@ a:hover {
   transition-duration: 0.25s;
 }
 
+header {
+  background: linear-gradient(to bottom, #242424 0%, #010101 100%);
+}
+
 #navToggleButton {
   display: block;
   width: 30px;
@@ -81,6 +85,7 @@ a:hover {
 
 nav {
   display: block;
+  position: relative;
   background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
   min-height: 44px;
 }
