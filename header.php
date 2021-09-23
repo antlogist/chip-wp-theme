@@ -36,7 +36,26 @@ wp_head(); ?>
 			c-7.893-23.893-12.16-49.6-12.16-76.16C117.333,9.493,107.84,0,96,0H21.333C9.6,0,0,9.493,0,21.333
 			C0,221.653,162.347,384,362.667,384c11.84,0,21.333-9.493,21.333-21.333V288C384,276.16,374.507,266.667,362.667,266.667z" />
         </svg>
-        <a href="tel:3816 2711">3816 2711</a>
+        <!--a href="tel:3816 2711">3816 2711</a!-->
+        <a id="phoneHref" href="tel:<?php echo get_theme_mod('phone');?>">
+          <span id="phone">
+            <?php 
+              if (!get_theme_mod('phone')) {
+                echo "123 456 789";
+              } else {
+                echo get_theme_mod('phone'); 
+              }
+            ?>
+          </span>
+        </a>
+        <script>
+          (function() {
+            const phone = "<?php echo get_theme_mod('phone'); ?>";
+            const el = document.getElementById("phoneHref");
+            el.setAttribute('href', 'tel:' + phone.replace(/\s/g, ''));
+          })();
+
+        </script>
       </div>
       <div class="row">
         <div class="col-sm-8">

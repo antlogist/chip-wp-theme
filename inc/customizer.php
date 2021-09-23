@@ -12,7 +12,30 @@ function overlap_customize_register( $wp_customize ) {
       'description'=> 'Theme Settings',
       'priority'=> 10,
   ));
+  
+  //Header section
+  $wp_customize->add_section('header_section',array(
+      'title'=>'Header & Carousel',
+      'priority'=>10,
+      'panel'=>'overlap_customize_panel',
+  ));
+  
+  //Phone setting
+  $wp_customize->add_setting('phone',array(
+      'default'=>'1234 5678',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'postMessage'
+  ));
 
+  //Phone control
+  $wp_customize->add_control('phone_control',array(
+      'label'=>'Phone Number',
+      'type'=>'text',
+      'section'=>'header_section',
+      'settings'=>'phone',
+  ));
+  
+  
   //Front-page section
   $wp_customize->add_section('front_page_section',array(
       'title'=>'Front Page',
@@ -33,21 +56,6 @@ function overlap_customize_register( $wp_customize ) {
       'type'=>'textarea',
       'section'=>'front_page_section',
       'settings'=>'front_page_tagline',
-  ));
-  
-  //Phone setting
-  $wp_customize->add_setting('phone',array(
-      'default'=>'1234 5678',
-      'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
-  ));
-
-  //Phone control
-  $wp_customize->add_control('phone_control',array(
-      'label'=>'Phone Number',
-      'type'=>'text',
-      'section'=>'front_page_section',
-      'settings'=>'phone',
   ));
   
   //Address setting
