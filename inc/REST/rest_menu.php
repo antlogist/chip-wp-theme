@@ -5,7 +5,7 @@ if ( ! defined ('ABSPATH') ) {
     exit;
 } 
 
-function overlap_menu() {
+function chip_menu() {
   register_rest_route( 'menus/v1', 'menu', array(
     'methods' => WP_REST_SERVER:: READABLE,
     'callback' => 'get_menu',

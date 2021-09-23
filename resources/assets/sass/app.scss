@@ -1,11 +1,12 @@
 //@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&display=swap');
 
-$color: #ffff00;
+$color: #ffd300;
 
 body {
   background-color: black;
   font-family: 'Raleway', sans-serif;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 a {
@@ -23,6 +24,37 @@ a {
 .opacity-100 {
   opacity: 1;
   transition-duration: .25s;
+}
+
+
+//Header
+
+header {
+  background: linear-gradient(to bottom, rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
+
+  .container {
+    position: relative;
+  }
+}
+
+.header-phone {
+  display: block;
+  position: absolute;
+  background-color: $color;
+  top: 0;
+  right: 0;
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px 15px;
+
+  svg {
+    margin-bottom: 2px;
+  }
+
+  a {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
 
 //Toggle button
@@ -101,6 +133,7 @@ a {
 //Nav
 nav {
   display: block;
+  position: relative;
   background: linear-gradient(to bottom, rgba(255, 247, 0, 1) 0%, rgba(255, 190, 0, 1) 100%);
   min-height: 44px;
 
@@ -121,7 +154,9 @@ nav {
 
     &.active {
       display: block;
+
       &.container {
+
         //before iPad hor
         @media (max-width: 1023px) {
           max-width: none;
@@ -232,6 +267,7 @@ nav {
               width: 100%;
               font-size: 12px;
               font-weight: 600;
+
               @media (min-width: 1024px) {
                 font-size: 14px;
                 padding: 0.5rem 0.75rem 0.5rem 0.75rem;
@@ -258,261 +294,74 @@ nav {
   }
 }
 
-//Figures
-.figures-wrapper {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-
-  @media (min-width: 2632px) {
-    height: 80%;
-    top: 20%;
-  }
+.carousel {
+  background-color: #fff;
+  padding: 14px 14px 4px 14px;
 }
 
-.figure {
-  display: block;
-  position: absolute;
-}
+#frontCards {
+  .row {
+    padding: 0 12px 14px 12px;
+    background-color: #fff;
 
-.figure-1 {
-  background-color: $color;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-
-  // iPhone
-  height: 950px;
-  width: 150px;
-  margin-left: -75px;
-  top: 25px;
-  left: 50%;
-
-  //iPad ver
-  @media (min-width: 768px) {
-    height: 768px;
-    width: 200px;
-    margin-left: -150px;
-    top: 50px;
-    left: 50%;
-  }
-
-  //iPad hor
-  @media (min-width: 1024px) {
-    height: 768px;
-    width: 250px;
-    margin-left: -175px;
-    top: 75px;
-  }
-}
-
-.figure-2 {
-  background-color: beige;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-
-  // iPhone
-  height: 300px;
-  width: 300px;
-  margin-left: -150px;
-  top: 100px;
-  left: 50%;
-
-  //iPad ver
-  @media (min-width: 768px) {
-    height: 350px;
-    width: 350px;
-    margin-left: -350px;
-    top: 150px;
-    left: 50%;
-  }
-
-  //iPad hor
-  @media (min-width: 1024px) {
-    height: 450px;
-    width: 450px;
-    margin-left: -450px;
-    top: 175px;
-  }
-
-  .logo-wrapper {
-    text-align: center;
-    padding: 25px;
-    height: 100%;
-
-    .logo {
-
-      //iPhone
-      width: 150px;
-      margin-top: -25px;
-
-      //iPad ver
-      @media (min-width: 768px) {
-        margin-top: 0;
-        width: 180px;
-      }
-
-      //iPad hor
-      @media (min-width: 1024px) {
-        margin-top: 0;
-        width: 250px;
-      }
+    a,
+    .subscribe-form {
+      display: block;
+      padding: 0 2px 0 2px;
     }
-
-    .tagline {
-      letter-spacing: 2px;
-      text-indent: 2px;
-      margin-top: -20px;
-    }
-
-    ._btn {
-
-      &:hover {
-        border-color: #333333;
-        color: #333333;
-      }
-    }
-
-    ._btn-invert {
-      border: 1px solid #333333;
-      color: #333333;
-
-      &:hover {
-        border-color: $color;
-        color: $color;
-      }
-    }
-  }
-
-}
-
-.figure-3 {
-  background-color: #333333;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-
-  //iPhone
-  height: 430px;
-  width: 300px;
-  margin-left: -150px;
-  top: 450px;
-  left: 50%;
-
-  //iPad ver
-  @media (min-width: 768px) {
-    height: 400px;
-    width: 400px;
-    margin-left: -50px;
-    top: 400px;
-    left: 50%;
-  }
-
-  //iPad hor
-  @media (min-width: 1024px) {
-    height: 425px;
-    width: 425px;
-    margin-left: -50px;
-    top: 450px;
-  }
-
-  .contact-wrapper {
-    padding: 35px;
-    height: 100%;
-
-    .tagline {
-      letter-spacing: 1px;
-      color: beige;
-    }
-
-    .contact {
-      font-weight: normal;
-      letter-spacing: 1px;
-      color: beige;
-
-      a {
-        letter-spacing: 0;
-        color: beige;
-        text-decoration: none;
-        font-family: 'Open Sans', sans-serif;
-
-        &:hover {
-          letter-spacing: 1px;
-          text-indent: 1px;
-          transition-duration: 0.25s;
+    
+    a:hover {
+      opacity: 1;
+      .title {
+        .title-wrapper {
           color: $color;
+          background-color: #000;
         }
       }
     }
-  }
-}
 
-._modal-overlay {
-  position: fixed;
-  z-index: 102;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-._modal {
-  z-index: 103;
-  position: fixed;
-  display: block;
-  width: 100%;
-  min-width: 280px;
-  height: 100%;
-  left: 0;
-  top: -100%;
-  padding: 20px;
-
-  &.active {
-    top: 0;
-    transition-duration: 0.25s;
-  }
-
-  ._modal-wrapper {
-    background-color: $color;
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-  }
-
-  .buttons-wrapper {
-    text-align: right;
-
-    ._btn {
-      border-color: #333333;
-      color: #333333;
-
-      &:hover {
-        border-color: beige;
-        color: beige;
-      }
-    }
-  }
-
-  form {
-    textarea {
-      height: 150px;
-
-      @media (min-width: 768px) {
-        height: 270px;
+    .title {
+      display: block;
+      background-color: #000;
+      padding: 7px 0;
+      .title-wrapper {
+        display: block;
+        background-color: $color;
+        width: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 8px;
+        padding: 3px 10px;
+        color: #000;
+        //iPhone 8
+        @media (min-width: 414px) {
+          font-size: 12px;
+        }
+        //iPad ver
+        @media (min-width: 768px) {
+          font-size: 14px;
+        }
+        //iPad hor
+        @media (min-width: 1024px) {
+          font-size: 20px;
+        }
+        &.title-about-wrapper {
+          background-color: #fff500;
+        }
+        &.title-products-wrapper {
+          background-color: #ffd600;
+        }
+        &.title-contact-wrapper {
+          background-color: #febf00;
+        }
       }
     }
 
-    ._btn {
-      color: #333333;
-      border-color: #333333;
+    .subscribe-form {
+      background-color: #fff;
 
-      &:hover {
-        color: white;
-        border-color: white;
+      .subscribe-form-wrapper {
+        background-color: coral;
       }
     }
   }

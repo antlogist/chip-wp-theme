@@ -2,6 +2,7 @@ body {
   background-color: black;
   font-family: "Raleway", sans-serif;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 a {
@@ -18,6 +19,31 @@ a:hover {
 .opacity-100 {
   opacity: 1;
   transition-duration: 0.25s;
+}
+
+header {
+  background: linear-gradient(to bottom, #242424 0%, #010101 100%);
+}
+header .container {
+  position: relative;
+}
+
+.header-phone {
+  display: block;
+  position: absolute;
+  background-color: #ffd300;
+  top: 0;
+  right: 0;
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px 15px;
+}
+.header-phone svg {
+  margin-bottom: 2px;
+}
+.header-phone a {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 #navToggleButton {
@@ -80,6 +106,7 @@ a:hover {
 
 nav {
   display: block;
+  position: relative;
   background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
   min-height: 44px;
 }
@@ -157,13 +184,13 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.parent-link::after {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current {
   background-color: #000;
-  color: #ffff00;
+  color: #ffd300;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link {
   padding-right: 1.25rem;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link::after {
-  border-top-color: #ffff00;
+  border-top-color: #ffd300;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child {
   display: none;
@@ -205,7 +232,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.current {
   background-color: #000;
-  color: #ffff00;
+  color: #ffd300;
 }
 
 #frontPageCarousel {
@@ -215,230 +242,69 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   background-color: black;
 }
 
-.figures-wrapper {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-@media (min-width: 2632px) {
-  .figures-wrapper {
-    height: 80%;
-    top: 20%;
-  }
+.carousel {
+  background-color: #fff;
+  padding: 14px 14px 4px 14px;
 }
 
-.figure {
+#frontCards .row {
+  padding: 0 12px 14px 12px;
+  background-color: #fff;
+}
+#frontCards .row a,
+#frontCards .row .subscribe-form {
   display: block;
-  position: absolute;
+  padding: 0 2px 0 2px;
 }
-
-.figure-1 {
-  background-color: #ffff00;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-  height: 950px;
-  width: 150px;
-  margin-left: -75px;
-  top: 25px;
-  left: 50%;
+#frontCards .row a:hover {
+  opacity: 1;
 }
-@media (min-width: 768px) {
-  .figure-1 {
-    height: 768px;
-    width: 200px;
-    margin-left: -150px;
-    top: 50px;
-    left: 50%;
-  }
+#frontCards .row a:hover .title .title-wrapper {
+  color: #ffd300;
+  background-color: #000;
 }
-@media (min-width: 1024px) {
-  .figure-1 {
-    height: 768px;
-    width: 250px;
-    margin-left: -175px;
-    top: 75px;
-  }
-}
-
-.figure-2 {
-  background-color: beige;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-  height: 300px;
-  width: 300px;
-  margin-left: -150px;
-  top: 100px;
-  left: 50%;
-}
-@media (min-width: 768px) {
-  .figure-2 {
-    height: 350px;
-    width: 350px;
-    margin-left: -350px;
-    top: 150px;
-    left: 50%;
-  }
-}
-@media (min-width: 1024px) {
-  .figure-2 {
-    height: 450px;
-    width: 450px;
-    margin-left: -450px;
-    top: 175px;
-  }
-}
-.figure-2 .logo-wrapper {
-  text-align: center;
-  padding: 25px;
-  height: 100%;
-}
-.figure-2 .logo-wrapper .logo {
-  width: 150px;
-  margin-top: -25px;
-}
-@media (min-width: 768px) {
-  .figure-2 .logo-wrapper .logo {
-    margin-top: 0;
-    width: 180px;
-  }
-}
-@media (min-width: 1024px) {
-  .figure-2 .logo-wrapper .logo {
-    margin-top: 0;
-    width: 250px;
-  }
-}
-.figure-2 .logo-wrapper .tagline {
-  letter-spacing: 2px;
-  text-indent: 2px;
-  margin-top: -20px;
-}
-.figure-2 .logo-wrapper ._btn:hover {
-  border-color: #333333;
-  color: #333333;
-}
-.figure-2 .logo-wrapper ._btn-invert {
-  border: 1px solid #333333;
-  color: #333333;
-}
-.figure-2 .logo-wrapper ._btn-invert:hover {
-  border-color: #ffff00;
-  color: #ffff00;
-}
-
-.figure-3 {
-  background-color: #333333;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 11;
-  height: 430px;
-  width: 300px;
-  margin-left: -150px;
-  top: 450px;
-  left: 50%;
-}
-@media (min-width: 768px) {
-  .figure-3 {
-    height: 400px;
-    width: 400px;
-    margin-left: -50px;
-    top: 400px;
-    left: 50%;
-  }
-}
-@media (min-width: 1024px) {
-  .figure-3 {
-    height: 425px;
-    width: 425px;
-    margin-left: -50px;
-    top: 450px;
-  }
-}
-.figure-3 .contact-wrapper {
-  padding: 35px;
-  height: 100%;
-}
-.figure-3 .contact-wrapper .tagline {
-  letter-spacing: 1px;
-  color: beige;
-}
-.figure-3 .contact-wrapper .contact {
-  font-weight: normal;
-  letter-spacing: 1px;
-  color: beige;
-}
-.figure-3 .contact-wrapper .contact a {
-  letter-spacing: 0;
-  color: beige;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-}
-.figure-3 .contact-wrapper .contact a:hover {
-  letter-spacing: 1px;
-  text-indent: 1px;
-  transition-duration: 0.25s;
-  color: #ffff00;
-}
-
-._modal-overlay {
-  position: fixed;
-  z-index: 102;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-._modal {
-  z-index: 103;
-  position: fixed;
+#frontCards .row .title {
   display: block;
-  width: 100%;
-  min-width: 280px;
-  height: 100%;
-  left: 0;
-  top: -100%;
-  padding: 20px;
+  background-color: #000;
+  padding: 7px 0;
 }
-._modal.active {
-  top: 0;
-  transition-duration: 0.25s;
-}
-._modal ._modal-wrapper {
-  background-color: #ffff00;
+#frontCards .row .title .title-wrapper {
   display: block;
-  position: relative;
+  background-color: #ffd300;
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 8px;
+  padding: 3px 10px;
+  color: #000;
 }
-._modal .buttons-wrapper {
-  text-align: right;
-}
-._modal .buttons-wrapper ._btn {
-  border-color: #333333;
-  color: #333333;
-}
-._modal .buttons-wrapper ._btn:hover {
-  border-color: beige;
-  color: beige;
-}
-._modal form textarea {
-  height: 150px;
-}
-@media (min-width: 768px) {
-  ._modal form textarea {
-    height: 270px;
+@media (min-width: 414px) {
+  #frontCards .row .title .title-wrapper {
+    font-size: 12px;
   }
 }
-._modal form ._btn {
-  color: #333333;
-  border-color: #333333;
+@media (min-width: 768px) {
+  #frontCards .row .title .title-wrapper {
+    font-size: 14px;
+  }
 }
-._modal form ._btn:hover {
-  color: white;
-  border-color: white;
+@media (min-width: 1024px) {
+  #frontCards .row .title .title-wrapper {
+    font-size: 20px;
+  }
+}
+#frontCards .row .title .title-wrapper.title-about-wrapper {
+  background-color: #fff500;
+}
+#frontCards .row .title .title-wrapper.title-products-wrapper {
+  background-color: #ffd600;
+}
+#frontCards .row .title .title-wrapper.title-contact-wrapper {
+  background-color: #febf00;
+}
+#frontCards .row .subscribe-form {
+  background-color: #fff;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper {
+  background-color: coral;
 }

@@ -1,9 +1,4 @@
 (function ($) {
-  wp.customize('front_page_tagline', function (value) {
-    value.bind(function (newval) {
-      $('#tagline').html(newval);
-    });
-  });
   
   wp.customize('phone', function (value) {
     value.bind(function (newval) {
@@ -11,27 +6,40 @@
     });
   });
   
-  wp.customize('address', function (value) {
+  wp.customize('slide_one', function (value) {
     value.bind(function (newval) {
-      $('#address').html(newval);
+      $('#slideOne').attr("src", newval);
     });
   });
   
-  wp.customize('postal_address', function (value) {
+  wp.customize('slide_two', function (value) {
     value.bind(function (newval) {
-      $('#postalAddress').html(newval);
+      $('#slideTwo').attr("src", newval);
     });
   });
   
-  wp.customize('about_page_id', function (value) {
+  wp.customize('slide_three', function (value) {
     value.bind(function (newval) {
-      $('#openModalAbout').data('page_id', newval);
+      $('#slideThree').attr("src", newval);
     });
   });
   
-  wp.customize('products_page_id', function (value) {
+  wp.customize('about_img', function (value) {
     value.bind(function (newval) {
-      $('#openModalProducts').data('page_id', newval);
+      $('#aboutImg').attr("src", newval);
     });
   });
+  
+  wp.customize('products_img', function (value) {
+    value.bind(function (newval) {
+      $('#productsImg').attr("src", newval);
+    });
+  });
+  
+  wp.customize('contact_img', function (value) {
+    value.bind(function (newval) {
+      $('#contactImg').attr("src", newval);
+    });
+  });
+  
 })(jQuery);
