@@ -102,6 +102,21 @@ function chip_customize_register( $wp_customize ) {
       'settings' => 'about_img', 
   ) ));
   
+  //About link setting
+  $wp_customize->add_setting('about_id',array(
+      'default'=>'',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'postMessage'
+  ));
+
+  //About link control
+  $wp_customize->add_control('about_id_control',array(
+      'label'=>'About Page',
+      'type'=>'dropdown-pages',
+      'section'=>'front_page_section',
+      'settings'=>'about_id',
+  ));
+  
   //Products img setting
   $wp_customize ->add_setting('products_img', array(
       'default' => '',
@@ -114,7 +129,22 @@ function chip_customize_register( $wp_customize ) {
       'mime_type' => 'image',
       'section'=>'front_page_section',
       'settings' => 'products_img', 
-  ) )); 
+  ) ));
+  
+  //Products link setting
+  $wp_customize->add_setting('products_id',array(
+      'default'=>'',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'postMessage'
+  ));
+
+  //Products link control
+  $wp_customize->add_control('products_id_control',array(
+      'label'=>'Products Page',
+      'type'=>'dropdown-pages',
+      'section'=>'front_page_section',
+      'settings'=>'products_id',
+  ));
   
   //Contact img setting
   $wp_customize ->add_setting('contact_img', array(
@@ -129,6 +159,25 @@ function chip_customize_register( $wp_customize ) {
       'section'=>'front_page_section',
       'settings' => 'contact_img', 
   ) ));
+  
+  //Contact link setting
+  $wp_customize->add_setting('contact_id',array(
+      'default'=>'',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'postMessage'
+  ));
+
+  //Contact link control
+  $wp_customize->add_control('contact_id_control',array(
+      'label'=>'Contact Page',
+      'type'=>'dropdown-pages',
+      'section'=>'front_page_section',
+      'settings'=>'contact_id',
+  ));
+  
+  
+  
+  
   
   //Front-page tagline setting
   $wp_customize->add_setting('front_page_tagline',array(
@@ -173,36 +222,6 @@ function chip_customize_register( $wp_customize ) {
       'type'=>'textarea',
       'section'=>'front_page_section',
       'settings'=>'postal_address',
-  ));
-  
-  //About link setting
-  $wp_customize->add_setting('about_page_id',array(
-      'default'=>'',
-      'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
-  ));
-
-  //About link control
-  $wp_customize->add_control('about_page_id_control',array(
-      'label'=>'About Page',
-      'type'=>'dropdown-pages',
-      'section'=>'front_page_section',
-      'settings'=>'about_page_id',
-  ));
-  
-  //Products link setting
-  $wp_customize->add_setting('products_page_id',array(
-      'default'=>'',
-      'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
-  ));
-
-  //Products link control
-  $wp_customize->add_control('products_page_id_control',array(
-      'label'=>'Products Page',
-      'type'=>'dropdown-pages',
-      'section'=>'front_page_section',
-      'settings'=>'products_page_id',
   ));
 }
 
