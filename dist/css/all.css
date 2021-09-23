@@ -24,6 +24,27 @@ a:hover {
 header {
   background: linear-gradient(to bottom, #242424 0%, #010101 100%);
 }
+header .container {
+  position: relative;
+}
+
+.header-phone {
+  display: block;
+  position: absolute;
+  background-color: #ffd300;
+  top: 0;
+  right: 0;
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px 15px;
+}
+.header-phone svg {
+  margin-bottom: 2px;
+}
+.header-phone a {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+}
 
 #navToggleButton {
   display: block;
@@ -163,13 +184,13 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.parent-link::after {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current {
   background-color: #000;
-  color: #ffff00;
+  color: #ffd300;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link {
   padding-right: 1.25rem;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav a.nav-link.current.parent-link::after {
-  border-top-color: #ffff00;
+  border-top-color: #ffd300;
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child {
   display: none;
@@ -211,7 +232,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a {
 }
 nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.current {
   background-color: #000;
-  color: #ffff00;
+  color: #ffd300;
 }
 
 #frontPageCarousel {
@@ -242,7 +263,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
 }
 
 .figure-1 {
-  background-color: #ffff00;
+  background-color: #ffd300;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   z-index: 11;
   height: 950px;
@@ -331,8 +352,8 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   color: #333333;
 }
 .figure-2 .logo-wrapper ._btn-invert:hover {
-  border-color: #ffff00;
-  color: #ffff00;
+  border-color: #ffd300;
+  color: #ffd300;
 }
 
 .figure-3 {
@@ -385,7 +406,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   letter-spacing: 1px;
   text-indent: 1px;
   transition-duration: 0.25s;
-  color: #ffff00;
+  color: #ffd300;
 }
 
 ._modal-overlay {
@@ -414,7 +435,7 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   transition-duration: 0.25s;
 }
 ._modal ._modal-wrapper {
-  background-color: #ffff00;
+  background-color: #ffd300;
   display: block;
   position: relative;
   width: 100%;
