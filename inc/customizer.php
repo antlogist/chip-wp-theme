@@ -5,9 +5,11 @@ if ( ! defined ('ABSPATH') ) {
   exit;
 }
 
-function overlap_customize_register( $wp_customize ) {
+function chip_customize_register( $wp_customize ) {
   
-  $wp_customize->add_panel('overlap_customize_panel',array(
+  //HEADER
+  
+  $wp_customize->add_panel('chip_customize_panel',array(
       'title'=>'Theme Settings',
       'description'=> 'Theme Settings',
       'priority'=> 10,
@@ -17,7 +19,7 @@ function overlap_customize_register( $wp_customize ) {
   $wp_customize->add_section('header_section',array(
       'title'=>'Header & Slider',
       'priority'=>10,
-      'panel'=>'overlap_customize_panel',
+      'panel'=>'chip_customize_panel',
   ));
   
   //Phone setting
@@ -77,13 +79,57 @@ function overlap_customize_register( $wp_customize ) {
       'settings' => 'slide_three', 
   ) )); 
   
+  //FRONT-PAGE
+  
   //Front-page section
   $wp_customize->add_section('front_page_section',array(
       'title'=>'Front Page',
       'priority'=>10,
-      'panel'=>'overlap_customize_panel',
+      'panel'=>'chip_customize_panel',
   ));
-
+  
+  //About img setting
+  $wp_customize ->add_setting('about_img', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
+  
+  //About img control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'about_img_control', array(
+      'label'=>'About Us Image',
+      'mime_type' => 'image',
+      'section'=>'front_page_section',
+      'settings' => 'about_img', 
+  ) ));
+  
+  //Products img setting
+  $wp_customize ->add_setting('products_img', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
+  
+  //Products img control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'products_img_control', array(
+      'label'=>'Products Image',
+      'mime_type' => 'image',
+      'section'=>'front_page_section',
+      'settings' => 'products_img', 
+  ) )); 
+  
+  //Contact img setting
+  $wp_customize ->add_setting('contact_img', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
+  
+  //Contact img control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'contact_img_control', array(
+      'label'=>'Contact Image',
+      'mime_type' => 'image',
+      'section'=>'front_page_section',
+      'settings' => 'contact_img', 
+  ) ));
+  
   //Front-page tagline setting
   $wp_customize->add_setting('front_page_tagline',array(
       'default'=>'Lorem Ipsum<br>Dolor Sit Amet',

@@ -20,7 +20,7 @@ function menu_depth( $hook ) {
   wp_add_inline_script( 'nav-menu', 'wpNavMenu.options.globalMaxDepth = 1;', 'after' );
 }
 
-function overlap_theme_support() {
+function chip_theme_support() {
   //Thumbnails support
   add_theme_support("post-thumbnails");
   
