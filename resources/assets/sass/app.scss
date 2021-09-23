@@ -298,3 +298,71 @@ nav {
   background-color: #fff;
   padding: 14px 14px 4px 14px;
 }
+
+#frontCards {
+  .row {
+    padding: 0 12px 14px 12px;
+    background-color: #fff;
+
+    a,
+    .subscribe-form {
+      display: block;
+      padding: 0 2px 0 2px;
+    }
+    
+    a:hover {
+      opacity: 1;
+      .title {
+        .title-wrapper {
+          color: $color;
+          background-color: #000;
+        }
+      }
+    }
+
+    .title {
+      display: block;
+      background-color: #000;
+      padding: 7px 0;
+      .title-wrapper {
+        display: block;
+        background-color: $color;
+        width: 100%;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 8px;
+        padding: 3px 10px;
+        color: #000;
+        //iPhone 8
+        @media (min-width: 414px) {
+          font-size: 12px;
+        }
+        //iPad ver
+        @media (min-width: 768px) {
+          font-size: 14px;
+        }
+        //iPad hor
+        @media (min-width: 1024px) {
+          font-size: 20px;
+        }
+        &.title-about-wrapper {
+          background-color: #fff500;
+        }
+        &.title-products-wrapper {
+          background-color: #ffd600;
+        }
+        &.title-contact-wrapper {
+          background-color: #febf00;
+        }
+      }
+    }
+
+    .subscribe-form {
+      background-color: #fff;
+
+      .subscribe-form-wrapper {
+        background-color: coral;
+      }
+    }
+  }
+}

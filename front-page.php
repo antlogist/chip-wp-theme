@@ -7,13 +7,15 @@ if ( ! defined ('ABSPATH') ) {
 get_header(); ?>
 
 <!--Content-->
-<div class="container">
-  <div class="row">
+<div class="container" id="frontCards">
+  <div class="row g-0">
     <div class="col-4 col-lg-3">
       <a id="aboutLink" href="<?php if (!get_theme_mod('about_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('about_id')) ); } ?>">
         <img id="aboutImg" src="<?php if (!get_theme_mod('about_img')) {echo "https://dummyimage.com/282x126/000/fff.jpg"; } else { echo esc_url(get_theme_mod('about_img')); } ?>" class="d-block w-100" alt="about">
         <span class="title">
-          Aboout us
+          <span class="title-wrapper title-about-wrapper">
+            About us
+          </span>
         </span>
       </a>
     </div>
@@ -21,7 +23,9 @@ get_header(); ?>
       <a id="productsLink" href="<?php if (!get_theme_mod('products_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('products_id')) ); } ?>">
         <img id="productsImg" src="<?php if (!get_theme_mod('products_img')) {echo "https://dummyimage.com/282x126/000/fff.jpg"; } else { echo esc_url(get_theme_mod('products_img')); } ?>" class="d-block w-100" alt="products">
         <span class="title">
-          Our Products
+          <span class="title-wrapper title-products-wrapper">
+            Our Products
+          </span>
         </span>
       </a>
     </div>
@@ -29,11 +33,19 @@ get_header(); ?>
       <a id="contactLink" href="<?php if (!get_theme_mod('contact_id')) { echo "./"; } else { echo esc_url( get_permalink(get_theme_mod('contact_id')) ); } ?>">
         <img id="contactImg" src="<?php if (!get_theme_mod('contact_img')) {echo "https://dummyimage.com/282x126/000/fff.jpg"; } else { echo esc_url(get_theme_mod('contact_img')); } ?>" class="d-block w-100" alt="contact">
         <span class="title">
-          Contact Us
+          <span class="title-wrapper title-contact-wrapper">
+            Contact Us
+          </span>
         </span>
       </a>
     </div>
-    <div class="col-12 col-lg-3"></div>
+    <div class="col-12 col-lg-3">
+      <div class="subscribe-form">
+        <div class="subscribe-form-wrapper">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur a et, incidunt, ex neque fuga. Eum cum veritatis nostrum neque, quisquam aut distinctio iure velit aperiam, dicta similique architecto explicabo!
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!--/Content-->
