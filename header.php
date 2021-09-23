@@ -24,7 +24,7 @@ wp_head(); ?>
 
 </script>
 
-<body <?php echo body_id(); body_class(); ?>>
+<body <?php echo body_id(); body_class(); ?> style="background-image: url('./wp-content/themes/chip-wp-theme/images/bg.jpg')">
 
   <!--Nav-->
   <nav id="navMain">
