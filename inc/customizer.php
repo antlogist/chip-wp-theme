@@ -175,5 +175,20 @@ function chip_customize_register( $wp_customize ) {
       'settings'=>'contact_id',
   ));
   
+  //Subscription shortcode setting
+  $wp_customize->add_setting('subscr',array(
+      'default'=>'',
+      'sanitize_callback' => 'sanitize_text_field',
+      'transport' => 'refresh'
+  ));
+
+  //Subscription shortcode control
+  $wp_customize->add_control('subscr_control',array(
+      'label'=>'Subscription Shortcode',
+      'type'=>'text',
+      'section'=>'front_page_section',
+      'settings'=>'subscr',
+  ));
+  
 }
 

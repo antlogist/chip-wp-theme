@@ -42,7 +42,10 @@ get_header(); ?>
     <div class="col-12 col-lg-3">
       <div class="subscribe-form">
         <div class="subscribe-form-wrapper">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur a et, incidunt, ex neque fuga. Eum cum veritatis nostrum neque, quisquam aut distinctio iure velit aperiam, dicta similique architecto explicabo!
+        <p><b class="text-uppercase">Subscribe</b> to our newsletter</p>
+        <?php
+            echo do_shortcode(get_theme_mod('subscr'));
+          ?>
         </div>
       </div>
     </div>
