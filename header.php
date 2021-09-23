@@ -91,7 +91,7 @@ wp_head(); ?>
     <div id="frontPageCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://dummyimage.com/1024x330/000/fff.jpg" class="d-block w-100" alt="tyre">
+          <img id="slideOne" src="<?php if (!get_theme_mod('slide_one')) {echo "https://dummyimage.com/1024x330/000/fff.jpg";} else { echo get_theme_mod('slide_one');} ?>" class="d-block w-100" alt="tyre">
         </div>
         <div class="carousel-item">
           <img src="https://dummyimage.com/1024x330/000/ffbd00.jpg" class="d-block w-100" alt="tyre">

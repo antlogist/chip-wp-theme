@@ -15,7 +15,7 @@ function overlap_customize_register( $wp_customize ) {
   
   //Header section
   $wp_customize->add_section('header_section',array(
-      'title'=>'Header & Carousel',
+      'title'=>'Header & Slider',
       'priority'=>10,
       'panel'=>'overlap_customize_panel',
   ));
@@ -34,6 +34,21 @@ function overlap_customize_register( $wp_customize ) {
       'section'=>'header_section',
       'settings'=>'phone',
   ));
+  
+  //Slide one setting
+  $wp_customize ->add_setting('slide_one', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
+  
+  //Slide one control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'slide_one_control', array(
+      'label'=>'Slide 1',
+      'mime_type' => 'image',
+      'section'=>'header_section',
+      'settings' => 'slide_one', 
+  ) )); 
+  
   
   
   //Front-page section

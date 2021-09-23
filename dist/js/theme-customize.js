@@ -8,14 +8,19 @@
 /***/ (() => {
 
 (function ($) {
-  wp.customize('front_page_tagline', function (value) {
-    value.bind(function (newval) {
-      $('#tagline').html(newval);
-    });
-  });
   wp.customize('phone', function (value) {
     value.bind(function (newval) {
       $('#phone').html(newval);
+    });
+  });
+  wp.customize('slide_one', function (value) {
+    value.bind(function (newval) {
+      $('#slideOne').attr("src", newval);
+    });
+  });
+  wp.customize('front_page_tagline', function (value) {
+    value.bind(function (newval) {
+      $('#tagline').html(newval);
     });
   });
   wp.customize('address', function (value) {
