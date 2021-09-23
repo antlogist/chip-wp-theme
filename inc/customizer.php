@@ -49,7 +49,33 @@ function overlap_customize_register( $wp_customize ) {
       'settings' => 'slide_one', 
   ) )); 
   
+  //Slide two setting
+  $wp_customize ->add_setting('slide_two', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
   
+  //Slide two control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'slide_two_control', array(
+      'label'=>'Slide 2',
+      'mime_type' => 'image',
+      'section'=>'header_section',
+      'settings' => 'slide_two', 
+  ) ));
+  
+  //Slide three setting
+  $wp_customize ->add_setting('slide_three', array(
+      'default' => '',
+      'transport' => 'postMessage'
+  ));
+  
+  //Slide three control
+  $wp_customize ->add_control(new WP_Customize_Image_Control($wp_customize,'slide_three_control', array(
+      'label'=>'Slide 3',
+      'mime_type' => 'image',
+      'section'=>'header_section',
+      'settings' => 'slide_three', 
+  ) )); 
   
   //Front-page section
   $wp_customize->add_section('front_page_section',array(

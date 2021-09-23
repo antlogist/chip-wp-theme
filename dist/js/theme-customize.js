@@ -18,6 +18,16 @@
       $('#slideOne').attr("src", newval);
     });
   });
+  wp.customize('slide_two', function (value) {
+    value.bind(function (newval) {
+      $('#slideTwo').attr("src", newval);
+    });
+  });
+  wp.customize('slide_three', function (value) {
+    value.bind(function (newval) {
+      $('#slideThree').attr("src", newval);
+    });
+  });
   wp.customize('front_page_tagline', function (value) {
     value.bind(function (newval) {
       $('#tagline').html(newval);
