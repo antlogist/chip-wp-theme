@@ -106,7 +106,7 @@ function chip_customize_register( $wp_customize ) {
   $wp_customize->add_setting('about_id',array(
       'default'=>'',
       'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
+      'transport' => 'refresh'
   ));
 
   //About link control
@@ -135,7 +135,7 @@ function chip_customize_register( $wp_customize ) {
   $wp_customize->add_setting('products_id',array(
       'default'=>'',
       'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
+      'transport' => 'refresh'
   ));
 
   //Products link control
@@ -164,7 +164,7 @@ function chip_customize_register( $wp_customize ) {
   $wp_customize->add_setting('contact_id',array(
       'default'=>'',
       'sanitize_callback' => 'sanitize_text_field',
-      'transport' => 'postMessage'
+      'transport' => 'refresh'
   ));
 
   //Contact link control
@@ -175,53 +175,5 @@ function chip_customize_register( $wp_customize ) {
       'settings'=>'contact_id',
   ));
   
-  
-  
-  
-  
-  //Front-page tagline setting
-  $wp_customize->add_setting('front_page_tagline',array(
-      'default'=>'Lorem Ipsum<br>Dolor Sit Amet',
-      'sanitize_callback' => 'wp_kses_post',
-      'transport' => 'postMessage'
-  ));
-
-  //Front-page tagline control
-  $wp_customize->add_control('front_page_tagline_control',array(
-      'label'=>'Front Page Tagline',
-      'type'=>'textarea',
-      'section'=>'front_page_section',
-      'settings'=>'front_page_tagline',
-  ));
-  
-  //Address setting
-  $wp_customize->add_setting('address',array(
-      'default'=>'251 Beibitshilik Street, New Chum QLD 1234',
-      'sanitize_callback' => 'wp_kses_post',
-      'transport' => 'postMessage'
-  ));
-
-  //Address control
-  $wp_customize->add_control('address_control',array(
-      'label'=>'Address',
-      'type'=>'textarea',
-      'section'=>'front_page_section',
-      'settings'=>'address',
-  ));
-  
-  //Postal address setting
-  $wp_customize->add_setting('postal_address',array(
-      'default'=>'251 Beibitshilik Street, New Chum QLD 1234',
-      'sanitize_callback' => 'wp_kses_post',
-      'transport' => 'postMessage'
-  ));
-
-  //Postal address control
-  $wp_customize->add_control('postal_address_control',array(
-      'label'=>'Postal Address',
-      'type'=>'textarea',
-      'section'=>'front_page_section',
-      'settings'=>'postal_address',
-  ));
 }
 
