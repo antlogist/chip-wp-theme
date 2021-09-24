@@ -1,5 +1,6 @@
 (function () {
   "use strict";
+  
   BASEOBJECT.wpcf7.init = function () {
     const form = document.querySelector(".wpcf7-form");
     if (!form) {
