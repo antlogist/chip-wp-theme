@@ -1,215 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./resources/assets/js/Classes/Mail.js":
-/*!*********************************************!*\
-  !*** ./resources/assets/js/Classes/Mail.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Mail)
-/* harmony export */ });
-/* harmony import */ var _Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Request.js */ "./resources/assets/js/Classes/Request.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var Mail = /*#__PURE__*/function () {
-  function Mail() {
-    _classCallCheck(this, Mail);
-
-    this.headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    };
-    this.url = "".concat(baseUrl, "/wp-content/themes/overlapping-design-theme/inc/mail/mail.php");
-  }
-
-  _createClass(Mail, [{
-    key: "getHeaders",
-    value: function getHeaders() {
-      return this.headers;
-    }
-  }, {
-    key: "sendMail",
-    value: function sendMail(formData) {
-      var id = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-      var myHttp = new _Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-      var body = formData;
-      myHttp.post(this.url, body, this.headers, function (err, resp) {
-        if (err) {
-          console.log(err);
-          return;
-        }
-
-        var message = document.getElementById(id);
-        var parent = message.parentElement;
-        parent.classList.add("w-100", "h-100", "d-flex");
-        parent.classList.remove("pt-5", "mt-5");
-        message.innerHTML = "";
-        var template = "\n        <div class=\"d-flex align-items-center justify-content-center h-100 w-100\">\n          <h1>".concat(resp.message, "</h1>\n        </div>\n        ");
-        message.insertAdjacentHTML("afterbegin", template);
-      });
-    }
-  }]);
-
-  return Mail;
-}();
-
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/Classes/Modal.js":
-/*!**********************************************!*\
-  !*** ./resources/assets/js/Classes/Modal.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Modal)
-/* harmony export */ });
-/* harmony import */ var _Mail_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Mail.js */ "./resources/assets/js/Classes/Mail.js");
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-
-
-var Modal = /*#__PURE__*/function () {
-  function Modal() {
-    _classCallCheck(this, Modal);
-
-    this.body = document.body;
-    this.fragment = document.createDocumentFragment();
-    this.modalId = "modalWindow";
-    this.modalClass = "_modal";
-    this.overlayClass = "_modal-overlay";
-    this.buttonCloseId = "modalClose";
-    this.buttonCloseIdBottom = "modalCloseBottom";
-    this.buttonSendMail = "buttonSendMail";
-  }
-
-  _createClass(Modal, [{
-    key: "renderTemplate",
-    value: function renderTemplate(htmlTemplate) {
-      var modal = document.getElementById(this.modalId);
-
-      if (modal) {
-        console.log("Element already exists!");
-        return;
-      }
-
-      this.body.classList.add("active");
-      this.fragment.appendChild(this.createOverlay());
-      this.fragment.appendChild(this.createTemplate(htmlTemplate));
-      this.body.appendChild(this.fragment);
-      this.listenClick();
-
-      if (!!document.querySelector("._modal .needs-validation")) {
-        this.formValidation();
-      }
-
-      this.classAnimation();
-    }
-  }, {
-    key: "formValidation",
-    value: function formValidation() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var modalForm = document.querySelector("._modal .needs-validation");
-      var valid = false; // Loop over them and prevent submission
-
-      modalForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-        valid = false;
-
-        if (!modalForm.checkValidity()) {
-          event.stopPropagation();
-          valid = false;
-        } else {
-          valid = true;
-        }
-
-        modalForm.classList.add("was-validated");
-
-        if (valid) {
-          var formData = new FormData(modalForm);
-          var data = {
-            name: formData.get("name"),
-            phone: formData.get("phone"),
-            email: formData.get("email"),
-            suburb: formData.get("suburb"),
-            message: formData.get("message"),
-            token: token
-          };
-          var mail = new _Mail_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-          mail.sendMail(new URLSearchParams(data).toString(), "messageContainer");
-        }
-      }, false);
-    }
-  }, {
-    key: "createOverlay",
-    value: function createOverlay() {
-      var overlay = document.createElement("div");
-      overlay.classList.add(this.overlayClass);
-      return overlay;
-    }
-  }, {
-    key: "createTemplate",
-    value: function createTemplate(htmlTemplate) {
-      //Modal
-      var modal = document.createElement("div");
-      modal.classList.add(this.modalClass);
-      modal.id = this.modalId; //HTML template
-
-      modal.insertAdjacentHTML("afterBegin", "<div class=\"_modal-wrapper\"><a href=\"#\" class=\"_close-modal-button\" id=\"".concat(this.buttonCloseId, "\"><span class=\"toggle-line toggle-line-1\"></span><span class=\"toggle-line toggle-line-2\"></span></a><div class=\"_modal-content-wrapper h-100 w-100\">").concat(htmlTemplate, "</div></div>"));
-      return modal;
-    }
-  }, {
-    key: "listenClick",
-    value: function listenClick() {
-      var modal = document.getElementById(this.modalId);
-      var overlay = document.querySelector(".".concat(this.overlayClass));
-      var buttonCloseId = this.buttonCloseId;
-      var buttonCloseIdBottom = this.buttonCloseIdBottom;
-      var body = this.body;
-      modal.addEventListener("click", function (e) {
-        //Close button click
-        if (buttonCloseId === e.target.id || buttonCloseId === e.target.parentElement.id || buttonCloseIdBottom === e.target.id) {
-          e.preventDefault();
-          modal.remove();
-          overlay.remove();
-          body.classList.remove("active");
-        }
-      });
-    }
-  }, {
-    key: "classAnimation",
-    value: function classAnimation() {
-      var modal = document.getElementById(this.modalId);
-      setTimeout(function () {
-        modal.classList.add("active");
-      }, 250);
-    }
-  }]);
-
-  return Modal;
-}();
-
-
-
-/***/ }),
-
 /***/ "./resources/assets/js/Classes/Request.js":
 /*!************************************************!*\
   !*** ./resources/assets/js/Classes/Request.js ***!
@@ -336,72 +127,8 @@ var Request = /*#__PURE__*/function () {
   window.BASEOBJECT = {
     nav: {},
     buttons: {},
-    frontPageCarousel: {}
-  };
-})();
-
-/***/ }),
-
-/***/ "./resources/assets/js/buttons/buttons.js":
-/*!************************************************!*\
-  !*** ./resources/assets/js/buttons/buttons.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Classes/Request.js */ "./resources/assets/js/Classes/Request.js");
-/* harmony import */ var _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Classes/Modal.js */ "./resources/assets/js/Classes/Modal.js");
-
-
-
-(function () {
-  "use strict";
-
-  BASEOBJECT.buttons.init = function () {
-    var body = document.body;
-    var modal = new _Classes_Modal_js__WEBPACK_IMPORTED_MODULE_1__["default"]();
-    var request = new _Classes_Request_js__WEBPACK_IMPORTED_MODULE_0__["default"]();
-    var template = "";
-    body.addEventListener("click", function (e) {
-      //About
-      if (e.target.id === "openModalAbout") {
-        var pageId = document.getElementById("openModalAbout").dataset.page_id;
-        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(pageId), function (err, resp) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-
-          template = "";
-          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"paragraphs-wrapper py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./about.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
-          modal.renderTemplate(template);
-        });
-      }
-
-      ; //Products
-
-      if (e.target.id === "openModalProducts") {
-        var _pageId = document.getElementById("openModalProducts").dataset.page_id;
-        request.get("".concat(baseUrl, "/wp-json/wp/v2/pages/").concat(_pageId), function (err, resp) {
-          if (err) {
-            console.log(err);
-            return;
-          }
-
-          template = "";
-          template = "\n          <div class=\"container-fluid container-xxl\">\n            <div class=\"products-info py-5\">\n              <h2 class=\"_modal-title\">".concat(resp.title.rendered, "</h2>\n              ").concat(resp.content.rendered, "\n              <div class=\"buttons-wrapper w-100 mt-3\">\n                <a href=\"./products.php\" class=\"_btn d-inline-block\">More...</a>\n                <a href=\"#\" class=\"_btn _btn-invert _btn-right d-inline-block\" id=\"modalCloseBottom\">Close</a>\n              </div>\n            </div>\n          </div>");
-          modal.renderTemplate(template);
-        });
-      } //Mail
-
-
-      if (e.target.id === "openModalMail") {
-        template = "";
-        template = "\n          <div class=\"container-fluid container-xxl\" id=\"messageContainer\">\n            <div class=\"contact-form-wrapper py-5\">\n              <h2 class=\"_modal-title\">Contact form</h2>\n              <form class=\"row needs-validation\" novalidate>\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputName\" class=\"form-label\">Name*</label>\n                    <input name=\"name\" type=\"text\" class=\"form-control\" id=\"inputName\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputPhoneNumber\" class=\"form-label\">Phone*</label>\n                    <input name=\"phone\" type=\"text\" class=\"form-control\" id=\"inputPhoneNumber\" required>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputEmail\" class=\"form-label\">Email address*</label>\n                    <input name=\"email\" type=\"email\" class=\"form-control\" id=\"inputEmail\" aria-describedby=\"emailHelp\" required>\n                    <div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"mb-3\">\n                    <label for=\"inputSuburb\" class=\"form-label\">Suburb</label>\n                    <input name=\"suburb\" type=\"text\" class=\"form-control\" id=\"inputSuburb\">\n                  </div>\n                </div>\n\n                <div class=\"col-12 col-md-6\">\n                  <div class=\"mb-3\">\n                    <label for=\"inputMessage\" class=\"form-label\">Message*</label>\n                    <textarea name=\"message\" class=\"form-control\" id=\"inputMessage\" required></textarea>\n                    <div class=\"valid-feedback\">\n                      Looks good!\n                    </div>\n                  </div>\n\n                  <div class=\"button-wrapper\">\n                    <button class=\"_btn text-uppercase\" id=\"buttonSendMail\">Submit</button>\n                  </div>\n                </div>\n              </form>\n            </div>\n          </div>";
-        modal.renderTemplate(template);
-      }
-    });
+    frontPageCarousel: {},
+    wpcf7: {}
   };
 })();
 
@@ -441,13 +168,14 @@ __webpack_require__.r(__webpack_exports__);
   "use strict";
 
   BASEOBJECT.nav.init();
-  BASEOBJECT.nav.toggleButton();
-  BASEOBJECT.buttons.init();
+  BASEOBJECT.nav.toggleButton(); //  BASEOBJECT.buttons.init();
+
   var body = document.body;
 
   switch (body.id) {
     case "frontPage":
       BASEOBJECT.frontPageCarousel.init();
+      BASEOBJECT.wpcf7.init();
   }
 })();
 
@@ -589,6 +317,35 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           navMain.classList.add("active");
           button.classList.add("active");
           body.classList.add("active");
+      }
+    });
+  };
+})();
+
+/***/ }),
+
+/***/ "./resources/assets/js/wpcf7/wpcf7.js":
+/*!********************************************!*\
+  !*** ./resources/assets/js/wpcf7/wpcf7.js ***!
+  \********************************************/
+/***/ (() => {
+
+(function () {
+  "use strict";
+
+  BASEOBJECT.wpcf7.init = function () {
+    var form = document.querySelector(".wpcf7-form");
+    form.addEventListener("click", function (e) {
+      var target = e.target;
+      var responseOutput = document.querySelector(".wpcf7-response-output");
+      var submitButton = document.querySelector(".wpcf7-submit");
+
+      if (target === submitButton) {
+        responseOutput.style.display = "flex";
+      }
+
+      if (target === responseOutput) {
+        responseOutput.style.display = "none";
       }
     });
   };
@@ -2451,7 +2208,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/baseObject.js")))
 /******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/nav/nav.js")))
 /******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/carousel/carousel.js")))
-/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/buttons/buttons.js")))
+/******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/wpcf7/wpcf7.js")))
 /******/ 	__webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/js/init.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["dist/css/all"], () => (__webpack_require__("./resources/assets/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);

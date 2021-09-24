@@ -359,8 +359,12 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
 #frontCards .row .subscribe-form .subscribe-form-wrapper .wpcf7-response-output {
   position: absolute;
   left: 0;
-  bottom: 0;
-  background-color: red;
+  top: 0;
+  background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
   font-size: 12px;
   z-index: 103;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin: 0;
 }
