@@ -42,7 +42,7 @@ get_header(); ?>
     <div class="col-12 col-lg-3">
       <div class="subscribe-form">
         <div class="subscribe-form-wrapper">
-        <p><b class="text-uppercase">Subscribe</b> to our newsletter</p>
+        <div class="form-title mb-1"><b class="text-uppercase">Subscribe</b> to our newsletter</div>
         <?php
             echo do_shortcode(get_theme_mod('subscr'));
           ?>
