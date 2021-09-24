@@ -53,24 +53,45 @@ get_header(); ?>
 
 <!--Content-->
 <div class="container">
-  <div class="post-wrapper">
-   <div class="row">
-     <div class="col-md-9">
-        <?php 
-          if ( have_posts() ) {
-          while ( have_posts() ) {
-            the_post(); 
+  <div class="content-wrapper">
+    <div class="row g-0">
+      <div class="col-md-9">
+        <div class="post-wrapper">
+          <?php 
+            if ( have_posts() ) {
+            while ( have_posts() ) {
+              the_post(); 
 
-            echo get_the_content();
+              echo get_the_content();
 
-            } // end while
-          } // end if
-        ?>
-     </div>
-     <div class="col-md-3">
-       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ipsa, non eligendi quia vel laborum facilis! Non molestias, expedita itaque officiis, nisi nesciunt blanditiis vero molestiae veritatis repellat et ipsa!
-     </div>
-   </div>
+              } // end while
+            } // end if
+          ?>
+        </div>
+      </div>
+      <!--Recent posts-->
+      <div class="col-md-3">
+        <div class="recent-posts-wrapper">
+          <div class="inner-wrapper">
+            <b>Industry</b> updates
+            <ul id="recentPosts" class="ul-recent-posts">
+              <?php
+              $recent_posts = wp_get_recent_posts(array(
+                  'numberposts' => 2,
+                  'post_status' => 'publish'
+              ));
+              foreach( $recent_posts as $post_item ) : ?>
+                <li class="li-recent-post">
+                  <a href="<?php echo get_permalink($post_item['ID']) ?>" class="recent-post-title">
+                    <?php echo $post_item['post_title'] ?> <b>Read more</b>
+                  </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!--/Content-->
