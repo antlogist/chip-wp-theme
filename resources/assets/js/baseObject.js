@@ -4,7 +4,8 @@
   window.BASEOBJECT = {
     nav: {},
     buttons: {},
-    frontPageCarousel: {}
+    frontPageCarousel: {},
+    wpcf7: {}
   }
 
 })();

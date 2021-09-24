@@ -304,7 +304,67 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
 }
 #frontCards .row .subscribe-form {
   background-color: #fff;
+  position: relative;
 }
 #frontCards .row .subscribe-form .subscribe-form-wrapper {
-  background-color: coral;
+  background-color: #000;
+  padding: 7px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .form-title {
+  color: #fff;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper input {
+  height: 24px;
+  font-size: 11px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .input-wrapper {
+  margin-bottom: 2px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .email-submit-wrapper {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  margin-bottom: 1px;
+  justify-content: space-between;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .email-submit-wrapper .email-wrapper {
+  display: inline-block;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .email-submit-wrapper .submit-wrapper {
+  display: inline-block;
+  padding-left: 5px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .email-submit-wrapper .submit-wrapper input {
+  height: 20px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 0px 5px;
+  width: 100%;
+  font-weight: bold;
+  border-color: #ffbe00;
+  background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
+  border-radius: 4px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .wpcf7-not-valid-tip {
+  display: none;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .ajax-loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+}
+#frontCards .row .subscribe-form .subscribe-form-wrapper .wpcf7-response-output {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to bottom, #fff700 0%, #ffbe00 100%);
+  font-size: 12px;
+  z-index: 103;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  margin: 0;
 }
