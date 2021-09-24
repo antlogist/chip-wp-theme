@@ -1,6 +1,8 @@
 /node_modules/
 /images/
 /package-lock.json
+/style.css
+/screenshot.png
 /mix-manifest.json
 /resources/assets/libs/bootstrap/js/
 /resources/assets/libs/bootstrap/scss/
