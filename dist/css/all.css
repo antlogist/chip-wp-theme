@@ -368,3 +368,8 @@ nav .nav-wrapper ul.nav-ul-main li.li-nav ul.ul-nav-child li.li-nav-child a.curr
   align-items: center;
   margin: 0;
 }
+
+.post-wrapper {
+  background-color: #fff;
+  padding: 12px;
+}

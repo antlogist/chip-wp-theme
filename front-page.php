@@ -6,7 +6,6 @@ if ( ! defined ('ABSPATH') ) {
 }
 get_header(); ?>
 
-<!--Content-->
 <div class="container" id="frontCards">
   <div class="row g-0">
     <div class="col-4 col-lg-3">
@@ -42,13 +41,36 @@ get_header(); ?>
     <div class="col-12 col-lg-3">
       <div class="subscribe-form">
         <div class="subscribe-form-wrapper">
-        <div class="form-title mb-1"><b class="text-uppercase">Subscribe</b> to our newsletter</div>
-        <?php
+          <div class="form-title mb-1"><b class="text-uppercase">Subscribe</b> to our newsletter</div>
+          <?php
             echo do_shortcode(get_theme_mod('subscr'));
           ?>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!--Content-->
+<div class="container">
+  <div class="post-wrapper">
+   <div class="row">
+     <div class="col-md-9">
+        <?php 
+          if ( have_posts() ) {
+          while ( have_posts() ) {
+            the_post(); 
+
+            echo get_the_content();
+
+            } // end while
+          } // end if
+        ?>
+     </div>
+     <div class="col-md-3">
+       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam ipsa, non eligendi quia vel laborum facilis! Non molestias, expedita itaque officiis, nisi nesciunt blanditiis vero molestiae veritatis repellat et ipsa!
+     </div>
+   </div>
   </div>
 </div>
 <!--/Content-->
