@@ -24,8 +24,10 @@ get_template_part('template-parts/pagebuttons', 'basic');
             <?php endwhile; ?>
 
           <!-- then the pagination links -->
-          <?php next_posts_link( '&larr; Older posts', $wp_query ->max_num_pages); ?>
-          <?php previous_posts_link( 'Newer posts &rarr;' ); ?>
+          <div class="mt-5">
+            <?php next_posts_link( 'Older posts &rarr;', $wp_query ->max_num_pages); ?>
+            <?php previous_posts_link( '&larr; Newer posts' ); ?>
+          </div>
 
         </div>
       </div>
