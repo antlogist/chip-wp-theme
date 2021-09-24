@@ -60,7 +60,9 @@ wp_head(); ?>
       <div class="row">
         <div class="col-sm-8">
           <div class="d-flex h-100 align-items-center justify-content-center pt-5 pt-sm-0">
-            <img class="img-fluid py-2 py-sm-0" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" class="logo" alt="logo">
+            <a href="<?php echo esc_url(get_home_url()); ?>">
+              <img class="img-fluid py-2 py-sm-0" src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png" class="logo" alt="logo">
+            </a>
           </div>
         </div>
         <div class="col-sm-4">
