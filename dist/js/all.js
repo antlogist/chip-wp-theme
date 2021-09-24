@@ -335,6 +335,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
   BASEOBJECT.wpcf7.init = function () {
     var form = document.querySelector(".wpcf7-form");
+
+    if (!form) {
+      return;
+    }
+
     form.addEventListener("click", function (e) {
       var target = e.target;
       var responseOutput = document.querySelector(".wpcf7-response-output");
