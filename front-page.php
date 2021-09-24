@@ -33,25 +33,7 @@ if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic")
       </div>
       <!--Recent posts-->
       <div class="col-md-3">
-        <div class="recent-posts-wrapper">
-          <div class="inner-wrapper">
-            <b>Industry</b> updates
-            <ul id="recentPosts" class="ul-recent-posts">
-              <?php
-              $recent_posts = wp_get_recent_posts(array(
-                  'numberposts' => 2,
-                  'post_status' => 'publish'
-              ));
-              foreach( $recent_posts as $post_item ) : ?>
-                <li class="li-recent-post">
-                  <a href="<?php echo get_permalink($post_item['ID']) ?>" class="recent-post-title">
-                    <?php echo $post_item['post_title'] ?> <b>Read more</b>
-                  </a>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-          </div>
-        </div>
+        <?php get_template_part('template-parts/recentnews', 'basic'); ?>
       </div>
     </div>
   </div>
