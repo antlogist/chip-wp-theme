@@ -20,8 +20,8 @@ get_template_part('template-parts/pagebuttons', 'basic');
             if ( have_posts() ) {
             while ( have_posts() ) {
               the_post(); 
-
-              echo get_the_content();
+              
+              the_content();
 
               } // end while
             } // end if
