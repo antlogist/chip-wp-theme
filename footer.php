@@ -11,7 +11,7 @@ if ( ! defined ("ABSPATH") ) {
       <div class="col-sm-6">
         <div class="footer-inner-wrapper">
           <p>
-            &copy;Chiptyre
+            &copy; Chiptyre
           </p>
         </div>
       </div>
