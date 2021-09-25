@@ -17,9 +17,7 @@ if ( ! defined ("ABSPATH") ) {
       </div>
       <div class="col-sm-6 ">
         <div class="footer-inner-wrapper">
-          <p class="text-sm-end">
-            <a class="last" href="#">Sitemap</a> | <a href="#">Contact Us</a> | <a href="#">Disclaimer &amp; Privacy Policy</a>
-          </p>
+          <p id="footerMenu" class="text-sm-end"></p>
         </div>
       </div>
     </div>
