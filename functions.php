@@ -37,8 +37,5 @@ add_action( 'customize_register', 'chip_customize_register' );
 //Theme customizer script
 add_action( 'customize_preview_init', 'chip_customizer_script' );
 
-//Session start
-add_action('init', 'register_my_session');
-
 //REST menu
 add_action( 'rest_api_init', 'chip_menu' );

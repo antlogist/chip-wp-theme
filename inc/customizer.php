@@ -88,6 +88,25 @@ function chip_customize_register( $wp_customize ) {
       'panel'=>'chip_customize_panel',
   ));
   
+  //Buttons type setting
+  $wp_customize ->add_setting('buttons_type', array(
+      'default' => '',
+      'transport' => 'refresh'
+  ));
+  
+  //Buttons type control
+  $wp_customize ->add_control(new WP_Customize_Control($wp_customize,'buttons_type_control', array(
+      'label' => "Type",
+      'section'=>'front_page_section',
+      'settings' => 'buttons_type',
+      'description' => 'Select type',
+      'type' => 'select',
+      'choices' => array(
+        'basic'         => 'basic',
+        'subscr'  => 'subscription form'
+      )
+  ) ));
+  
   //About img setting
   $wp_customize ->add_setting('about_img', array(
       'default' => '',
@@ -191,4 +210,3 @@ function chip_customize_register( $wp_customize ) {
   ));
   
 }
-

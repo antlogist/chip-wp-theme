@@ -6,11 +6,8 @@ if ( ! defined ('ABSPATH') ) {
 }
 get_header(); 
 
-if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic") {
-  get_template_part('template-parts/frontbuttons', 'basic'); 
-} else {
-  get_template_part('template-parts/frontbuttons', 'subscr'); 
-}
+
+get_template_part('template-parts/pagebuttons', 'basic');
 
 ?>
 <!--Content-->
@@ -23,7 +20,7 @@ if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic")
             if ( have_posts() ) {
             while ( have_posts() ) {
               the_post(); 
-
+              
               the_content();
 
               } // end while
@@ -33,7 +30,7 @@ if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic")
       </div>
       <!--Recent posts-->
       <div class="col-md-3">
-        <?php get_template_part('template-parts/recentnews', 'basic'); ?>
+          <?php get_template_part('template-parts/recentnews', 'basic'); ?>
       </div>
     </div>
   </div>
