@@ -2,6 +2,7 @@
   "use strict";
 
   BASEOBJECT.nav.init();
+  BASEOBJECT.nav.initFooter();
   BASEOBJECT.nav.toggleButton();
 //  BASEOBJECT.buttons.init();
   

@@ -3,6 +3,25 @@ import Request from "../Classes/Request.js";
 (function () {
   "use strict";
 
+  BASEOBJECT.nav.initFooter = function () {
+    const footerMenuEl = document.querySelector("#footerMenu");
+    const request = new Request();
+
+    request.get(`${baseUrl}/wp-json/menus/v1/footer-menu`, (err, resp) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      
+      const length = resp.length;
+      
+      resp.map((item, index) => {
+        const navItem = `<a href="${item.url}">${item.title}</a> ${index !== length - 1 ? " | " : ""}`;
+        footerMenuEl.insertAdjacentHTML("beforeEnd", navItem);
+      });
+    });
+  }
+
   BASEOBJECT.nav.init = function () {
     const navMainWrapper = document.getElementById("navMainWrapper");
     const request = new Request();
@@ -88,10 +107,10 @@ import Request from "../Classes/Request.js";
 
     navMainWrapper.addEventListener("click", function (e) {
       const el = e.target;
-      
+
       const submenus = document.querySelectorAll(".ul-nav-child");
-      [...submenus].map((submenu)=>{
-        if(submenu.dataset.id !== el.dataset.id) {
+      [...submenus].map((submenu) => {
+        if (submenu.dataset.id !== el.dataset.id) {
           submenu.classList.remove("show");
         }
       })
