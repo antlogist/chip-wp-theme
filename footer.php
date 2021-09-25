@@ -6,6 +6,7 @@ if ( ! defined ("ABSPATH") ) {
 } ?>
 
 <footer>
+
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
@@ -22,6 +23,7 @@ if ( ! defined ("ABSPATH") ) {
       </div>
     </div>
   </div>
+
 </footer>
 
 <?php
