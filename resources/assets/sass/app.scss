@@ -42,20 +42,21 @@ header {
 .header-phone {
   display: block;
   position: absolute;
-  background-color: $color;
   top: 0;
   right: 0;
-  border-radius: 0px 0px 5px 5px;
-  padding: 10px 15px;
 
   svg {
     margin-bottom: 2px;
   }
 
   a {
+    display: block;
+    background-color: $color;
     color: #000;
     font-size: 20px;
     font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 0px 0px 5px 5px;
   }
 }
 
