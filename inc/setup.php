@@ -30,7 +30,15 @@ function chip_theme_support() {
   add_theme_support("menus");
 }
 
-// Dynamic body id
+/**
+ * This function determines the current page type in WordPress 
+ * by checking various conditions such as `is_front_page`, `is_home`, etc. 
+ * If a condition matches, it sets an appropriate ID for the `<body>` tag 
+ * using the corresponding value from the `$pages` array. 
+ * The IDs are escaped to prevent XSS vulnerabilities.
+ *
+ * @return void
+ */
 function body_id() {
   $pages = [
     'is_front_page' => 'frontPage',
