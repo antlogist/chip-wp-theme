@@ -31,16 +31,19 @@ function chip_theme_support() {
 }
 
 // Dynamic body id
-function body_id() { 
-  if (is_front_page()) {
-    return ' id="frontPage"';
-  } elseif (is_home()) {
-    return ' id="homePage"';
-  } elseif (is_single()) {
-    return ' id="singlePage"';
-  } elseif (is_search()) {
-    return ' id="searchPage"';
-  } elseif (is_archive()) {
-    return ' id="archivePage"';
+function body_id() {
+  $pages = [
+    'is_front_page' => 'frontPage',
+    'is_home'       => 'homePage',
+    'is_single'     => 'singlePage',
+    'is_search'     => 'searchPage',
+    'is_archive'    => 'archivePage'
+  ];
+
+  foreach ($pages as $condition => $value) {
+    if (call_user_func($condition)) { // is_front_page()...
+      echo 'id="' . esc_attr($value) . '"';
+      return;
+    }
   }
 }
