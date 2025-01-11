@@ -30,17 +30,28 @@ function chip_theme_support() {
   add_theme_support("menus");
 }
 
-// Dynamic body id
-function body_id() { 
-  if (is_front_page()) {
-    return ' id="frontPage"';
-  } elseif (is_home()) {
-    return ' id="homePage"';
-  } elseif (is_single()) {
-    return ' id="singlePage"';
-  } elseif (is_search()) {
-    return ' id="searchPage"';
-  } elseif (is_archive()) {
-    return ' id="archivePage"';
+/**
+ * This function determines the current page type in WordPress 
+ * by checking various conditions such as `is_front_page`, `is_home`, etc. 
+ * If a condition matches, it sets an appropriate ID for the `<body>` tag 
+ * using the corresponding value from the `$pages` array. 
+ * The IDs are escaped to prevent XSS vulnerabilities.
+ *
+ * @return void
+ */
+function body_id() {
+  $pages = [
+    'is_front_page' => 'frontPage',
+    'is_home'       => 'homePage',
+    'is_single'     => 'singlePage',
+    'is_search'     => 'searchPage',
+    'is_archive'    => 'archivePage'
+  ];
+
+  foreach ($pages as $condition => $value) {
+    if (call_user_func($condition)) { // is_front_page()...
+      echo 'id="' . esc_attr($value) . '"';
+      return;
+    }
   }
 }

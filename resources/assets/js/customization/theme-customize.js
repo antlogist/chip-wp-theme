@@ -8,19 +8,19 @@
   
   wp.customize('slide_one', function (value) {
     value.bind(function (newval) {
-      $('#slideOne').attr("src", newval);
+      $('#slide_one').attr("src", newval);
     });
   });
   
   wp.customize('slide_two', function (value) {
     value.bind(function (newval) {
-      $('#slideTwo').attr("src", newval);
+      $('#slide_two').attr("src", newval);
     });
   });
   
   wp.customize('slide_three', function (value) {
     value.bind(function (newval) {
-      $('#slideThree').attr("src", newval);
+      $('#slide_three').attr("src", newval);
     });
   });
   
