@@ -1,5 +1,20 @@
 # Old School WordPress Theme
 
+- Theme Name: Chip theme
+- Theme URI: https://github.com/antlogist/chip-wp-theme
+- Author: Anton Podlesnyy
+- Author URI: https://podlesnyy.ru
+- Description: Simple business theme with old school design
+- Tags: business-theme, old-school-design
+- Version: 2.0
+- Requires at least: 5.0
+- Tested up to: 6.7.1
+- Requires PHP: 8.2
+- License: GNU General Public License v2 or later
+- License URI: http://www.gnu.org/licenses/gpl-2.0.html
+- Text Domain: chiptheme
+- Use it to make something cool, have fun, and share what you've learned with others.
+
 ### Structure
 
 ```bash
