@@ -1,7 +1,6 @@
 <?php
-
-//Exit if accessed directly
-if ( ! defined ("ABSPATH") ) {
+if (! defined("ABSPATH")) {
+  header("Location: /");
   exit;
 } ?>
 
@@ -27,7 +26,7 @@ if ( ! defined ("ABSPATH") ) {
 </footer>
 
 <?php
-  wp_footer();
+wp_footer();
 ?>
 </body>
 

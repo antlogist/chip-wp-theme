@@ -15,7 +15,16 @@
 - Text Domain: chiptheme
 - Use it to make something cool, have fun, and share what you've learned with others.
 
-### Structure
+# Website menu
+
+To display menus, the REST API is utilized. The endpoints are as follows:
+
+- Header menu: `/wp-json/menus/v1/menu`
+- Footer menu: `/wp-json/menus/v1/footer`
+
+In order for the menus to appear, you need to create menus named "header" and "footer" in the admin panel.
+
+# Structure
 
 ```bash
 .
