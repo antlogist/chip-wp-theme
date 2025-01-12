@@ -24,6 +24,61 @@ To display menus, the REST API is utilized. The endpoints are as follows:
 
 In order for the menus to appear, you need to create menus named "header" and "footer" in the admin panel.
 
+# A little bit about the REST API
+
+```php
+// wp-content/themes/chip-wp-theme/functions.php
+
+//REST menu
+include( get_template_directory() . '/inc/REST/rest_menu.php');
+...
+//REST menu
+add_action( 'rest_api_init', 'chip_menu' );
+```
+Registers a REST API route. Implement filtering logic in REST API endpoint to sanitize and limit site menu information, enhancing security and preventing unauthorized access.
+
+```php
+// wp-content/themes/chip-wp-theme/inc/REST/rest_menu.php
+
+function chip_menu()
+{
+  register_rest_route('menus/v1', 'menu', array(
+    'methods' => WP_REST_SERVER::READABLE,
+    'callback' => 'get_menu',
+  ));
+
+  register_rest_route('menus/v1', 'footer-menu', array(
+    'methods' => WP_REST_SERVER::READABLE,
+    'callback' => 'get_footer_menu',
+  ));
+}
+
+function get_menu()
+{
+  $menu_items = wp_get_nav_menu_items('main');
+  $filtered_items = filter_nav($menu_items);
+  return $filtered_items;
+}
+
+function get_footer_menu()
+{
+  $menu_items = wp_get_nav_menu_items('footer');
+  $filtered_items = filter_nav($menu_items);
+  return $filtered_items;
+}
+
+function filter_nav($objects)
+{
+  $filteredObjects = array_reduce($objects, function ($carry, $item) {
+    $newItem = ["url" => $item->url, "title" => $item->title];
+    $carry[] = $newItem;
+    return $carry;
+  }, []);
+
+  return $filteredObjects;
+}
+```
+
 # Structure
 
 ```bash
