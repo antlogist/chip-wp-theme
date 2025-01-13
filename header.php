@@ -12,7 +12,7 @@ if (! defined("ABSPATH")) {
   const baseUrl = "<?= get_site_url(); ?>";
 </script>
 
-<body <?php body_id(); ?> <?php body_class(); ?> style="background-image: url('<?= get_stylesheet_directory_uri(); ?>/images/bg.jpg');">
+<body <?php body_id(); ?> <?php body_class(); ?>>
 
   <header>
     <div class="container">
@@ -68,7 +68,7 @@ if (! defined("ABSPATH")) {
           $placeholder_image = 'https://dummyimage.com/1142x283/000/fff.jpg';
           $src = get_theme_mod($slide_name) ?: $placeholder_image;
           echo "<img id='$slide_name' src='$src' class='d-block w-100' alt='tyre'>";
-        } 
+        }
         ?>
 
         <div class="carousel-item active">
