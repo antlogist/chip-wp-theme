@@ -49,7 +49,8 @@ function custom_excerpt_length($length)
 add_filter('excerpt_length', 'custom_excerpt_length');
 
 // Modify read more
-function custom_excerpt_more($more) {
-  return '... <a href="' . get_permalink() . '">More...</a>';
+function custom_excerpt_more($more)
+{
+  return '... <a href="' . get_permalink() . '"><br><span class="d-inline-block mt-2">Read more</span></a>';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
