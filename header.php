@@ -6,7 +6,11 @@ if (! defined("ABSPATH")) {
 
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-<?php wp_head(); ?>
+
+<head>
+  <meta charset="<?php bloginfo('charset') ?>">
+  <?php wp_head(); ?>
+</head>
 
 <script>
   const baseUrl = "<?= get_site_url(); ?>";
