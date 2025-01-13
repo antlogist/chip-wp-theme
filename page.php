@@ -21,7 +21,7 @@ get_template_part('template-parts/pagebuttons', 'basic');
       </div>
       <!--Recent posts-->
       <div class="col-md-3">
-        <?php get_template_part('template-parts/recentnews', 'basic'); ?>
+        <?php get_template_part('template-parts/childpages', 'basic'); ?>
       </div>
     </div>
   </div>
