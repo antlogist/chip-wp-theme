@@ -12,7 +12,7 @@ if (! defined("ABSPATH")) {
   const baseUrl = "<?= get_site_url(); ?>";
 </script>
 
-<body <?php body_id(); ?> <?php body_class(); ?> style="background-image: url('<?= get_stylesheet_directory_uri(); ?>/images/bg.jpg');">
+<body <?php body_id(); ?> <?php body_class(); ?>>
 
   <header>
     <div class="container">
@@ -33,14 +33,14 @@ if (! defined("ABSPATH")) {
         <div class="col-sm-8">
           <div class="d-flex h-100 align-items-center justify-content-center pt-5 pt-sm-0">
             <a href="<?= esc_url(get_home_url()); ?>">
-              <img class="img-fluid py-2 py-sm-0" src="<?= get_stylesheet_directory_uri(); ?>/images/logo.png" class="logo" alt="logo">
+              <img class="img-fluid py-2 py-sm-0" src="<?= get_theme_file_uri(); ?>/images/logo.png" class="logo" alt="logo">
             </a>
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="d-flex h-100 align-items-center justify-content-center pt-sm-5">
-            <img class="img-fluid" src="<?= get_stylesheet_directory_uri(); ?>/images/partner-logo.png" class="logo" alt="partner-logo">
+            <img class="img-fluid" src="<?= get_theme_file_uri(); ?>/images/partner-logo.png" class="logo" alt="partner-logo">
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@ if (! defined("ABSPATH")) {
           $placeholder_image = 'https://dummyimage.com/1142x283/000/fff.jpg';
           $src = get_theme_mod($slide_name) ?: $placeholder_image;
           echo "<img id='$slide_name' src='$src' class='d-block w-100' alt='tyre'>";
-        } 
+        }
         ?>
 
         <div class="carousel-item active">
