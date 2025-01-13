@@ -33,14 +33,14 @@ if (! defined("ABSPATH")) {
         <div class="col-sm-8">
           <div class="d-flex h-100 align-items-center justify-content-center pt-5 pt-sm-0">
             <a href="<?= esc_url(get_home_url()); ?>">
-              <img class="img-fluid py-2 py-sm-0" src="<?= get_stylesheet_directory_uri(); ?>/images/logo.png" class="logo" alt="logo">
+              <img class="img-fluid py-2 py-sm-0" src="<?= get_theme_file_uri(); ?>/images/logo.png" class="logo" alt="logo">
             </a>
           </div>
         </div>
 
         <div class="col-sm-4">
           <div class="d-flex h-100 align-items-center justify-content-center pt-sm-5">
-            <img class="img-fluid" src="<?= get_stylesheet_directory_uri(); ?>/images/partner-logo.png" class="logo" alt="partner-logo">
+            <img class="img-fluid" src="<?= get_theme_file_uri(); ?>/images/partner-logo.png" class="logo" alt="partner-logo">
           </div>
         </div>
       </div>
