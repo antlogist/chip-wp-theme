@@ -39,3 +39,17 @@ add_action('customize_preview_init', 'chip_customizer_script');
 
 // REST menu
 add_action('rest_api_init', 'chip_menu');
+
+// Modify excerpt length
+function custom_excerpt_length($length)
+{
+  $length = 10;
+  return $length;
+}
+add_filter('excerpt_length', 'custom_excerpt_length');
+
+// Modify read more
+function custom_excerpt_more($more) {
+  return '... <a href="' . get_permalink() . '">More...</a>';
+}
+add_filter('excerpt_more', 'custom_excerpt_more');
