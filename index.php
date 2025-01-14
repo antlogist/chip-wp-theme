@@ -20,9 +20,11 @@ get_header();
         endif; ?>
     </div>
 
-    <div class="content-wrapper mt-2 pt-3">
-        <?= paginate_links() ?>
-    </div>
+    <?php if (paginate_links()) { ?>
+        <div class="content-wrapper mt-2 pt-3">
+            <?= paginate_links() ?>
+        </div>
+    <?php } ?>
 </div>
 
 <?php
