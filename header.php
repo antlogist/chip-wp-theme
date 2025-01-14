@@ -69,9 +69,16 @@ if (! defined("ABSPATH")) {
         <?php
         function render_carousel_item($slide_name)
         {
-          $placeholder_image = 'https://dummyimage.com/1142x283/000/fff.jpg';
-          $src = get_theme_mod($slide_name) ?: $placeholder_image;
-          echo "<img id='$slide_name' src='$src' class='d-block w-100' alt='tyre'>";
+          $placeholder_image_url = 'https://dummyimage.com/1142x283/000/fff.jpg';
+          $image_url = get_theme_mod($slide_name) ?: $placeholder_image_url;
+          $attachment_id = attachment_url_to_postid($image_url);
+          if ($attachment_id) {
+            $banner_size_url = wp_get_attachment_image_src($attachment_id, 'pageBanner')[0];
+            $image_url = esc_url($banner_size_url);
+          } else {
+            $image_url = esc_url($placeholder_image_url);
+          }
+          echo '<img src="' . $image_url . '" alt="Page Banner" id="' . esc_attr($slide_name) . '" class="d-block w-100">';
         }
         ?>
 
