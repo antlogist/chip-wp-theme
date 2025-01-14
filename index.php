@@ -1,43 +1,29 @@
-<?php 
-
-//Exit if accessed directly
-if ( ! defined ('ABSPATH') ) {
-  exit;
+<?php
+if (! defined("ABSPATH")) {
+    header("Location: /");
+    exit;
 }
-get_header(); 
 
-get_template_part('template-parts/pagebuttons', 'basic');
-
+get_header();
 ?>
-<!--Content-->
-<div class="container">
-  <div class="content-wrapper">
-    <div class="row g-0">
-      <div class="col-md-9">
-        <div class="post-wrapper">
-          <?php 
-            $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-            $args = array( 'post_type' => 'post', 'posts_per_page' => 10, 'paged' => $paged );
-            $wp_query = new WP_Query($args);
-            while ( have_posts() ) : the_post(); ?>
-              <h5><a href="<?php echo esc_url(get_the_permalink());?>"><?php the_title() ?></a></h5>
-            <?php endwhile; ?>
 
-          <!-- then the pagination links -->
-          <div class="mt-5">
-            <?php next_posts_link( 'Older posts &rarr;', $wp_query ->max_num_pages); ?>
-            <?php previous_posts_link( '&larr; Newer posts' ); ?>
-          </div>
-
-        </div>
-      </div>
-      <!--Recent posts-->
-      <div class="col-md-3">
-          <?php get_template_part('template-parts/recentnews', 'basic'); ?>
-      </div>
+<div class="container my-5">
+    <div class="content-wrapper pt-3">
+        <?php
+        if (have_posts()) :
+            while (have_posts()) : the_post(); ?>
+                <h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+                <p class="small">Posted by <b><?php the_author_posts_link() ?></b> on <?= get_the_date('d.m.y') ?> in <b><?= get_the_category_list(', ') ?></b></p>
+                <p><?php the_excerpt(); ?></p>
+        <?php
+            endwhile;
+        endif; ?>
     </div>
-  </div>
-</div>
-<!--/Content-->
 
-<?php get_footer(); ?>
+    <div class="content-wrapper mt-2 pt-3">
+        <?= paginate_links() ?>
+    </div>
+</div>
+
+<?php
+get_footer();
