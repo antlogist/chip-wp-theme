@@ -18,6 +18,8 @@ include(get_template_directory() . '/inc/customizer.php');
 // REST menu
 include(get_template_directory() . '/inc/REST/rest_menu.php');
 
+include(get_template_directory() . '/inc/cpt.php');
+
 /*===HOOKS===*/
 // Theme features
 add_action('after_setup_theme', 'chip_theme_support');
@@ -54,3 +56,6 @@ function custom_excerpt_more($more)
   return '... <a href="' . get_permalink() . '" class="small"><br><span class="d-inline-block mt-2">Read more</span></a>';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
+
+// Register custom post types
+add_action('init', 'chip_theme_post_types');

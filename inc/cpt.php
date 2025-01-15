@@ -1,0 +1,46 @@
+<?php
+
+//Exit if accessed directly
+if (! defined("ABSPATH")) {
+    exit;
+}
+
+function chip_theme_post_types()
+{
+    $labels = array(
+        'name'               => _x('Events', 'Post Type General Name', 'chip-wp-theme'),
+        'singular_name'      => _x('Event', 'Post Type Singular Name', 'chip-wp-theme'),
+        'menu_name'          => __('Events', 'chip-wp-theme'),
+        'parent_item_colon'  => __('Parent Event:', 'chip-wp-theme'),
+        'all_items'          => __('All Events', 'chip-wp-theme'),
+        'view_item'          => __('View Event', 'chip-wp-theme'),
+        'add_new_item'       => __('Add New Event', 'chip-wp-theme'),
+        'add_new'            => __('Add New', 'chip-wp-theme'),
+        'edit_item'          => __('Edit Event', 'chip-wp-theme'),
+        'update_item'        => __('Update Event', 'chip-wp-theme'),
+        'search_items'       => __('Search Events', 'chip-wp-theme'),
+        'not_found'          => __('Not found', 'chip-wp-theme'),
+        'not_found_in_trash' => __('Not found in Trash', 'chip-wp-theme'),
+    );
+    $args = array(
+        'label'               => __('event', 'chip-wp-theme'),
+        'description'         => __('Event news and reviews', 'chip-wp-theme'),
+        'labels'              => $labels,
+        'supports'            => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',),
+        'taxonomies'          => array('category', 'post_tag'),
+        'hierarchical'        => false,
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'menu_position'       => 5,
+        'show_in_admin_bar'   => true,
+        'show_in_nav_menus'   => true,
+        'can_export'          => true,
+        'has_archive'         => true,
+        'exclude_from_search' => false,
+        'publicly_queryable'  => true,
+        'capability_type'     => 'post',
+        'show_in_rest'        => true, // Guttenberg
+    );
+    register_post_type('event', $args);
+}
