@@ -6,33 +6,24 @@ if (! defined('ABSPATH')) {
 }
 get_header();
 
-if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic") {
-  get_template_part('template-parts/frontbuttons', 'basic');
-} else {
-  get_template_part('template-parts/frontbuttons', 'subscr');
-}
+// if (!get_theme_mod('buttons_type') || get_theme_mod('buttons_type') === "basic") {
+//   get_template_part('template-parts/frontbuttons', 'basic');
+// } else {
+//   get_template_part('template-parts/frontbuttons', 'subscr');
+// }
+
+get_template_part('template-parts/pagebuttons', 'basic');
+
 
 ?>
 <!--Content-->
 <div class="container">
   <div class="content-wrapper">
-    <div class="row g-0">
-      <div class="col-md-9">
+    <div class="row">
+      <div class="col-md-12">
         <div class="post-wrapper">
-          <?php
-          if (have_posts()) {
-            while (have_posts()) {
-              the_post();
-
-              the_content();
-            } // end while
-          } // end if
-          ?>
+          <?php get_template_part('template-parts/eventlist', 'basic'); ?>
         </div>
-      </div>
-      <!--Recent posts-->
-      <div class="col-md-3">
-        <?php get_template_part('template-parts/recentnews', 'basic'); ?>
       </div>
     </div>
   </div>
