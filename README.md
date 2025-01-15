@@ -79,6 +79,16 @@ function filter_nav($objects)
 }
 ```
 
+# A direct method of accessing the file system, bypassing FTP.
+
+You can manually change the WordPress configuration file to allow automatic updates without entering FTP data.
+Open the file wp-config.php in the WordPress root directory. Add the following line:
+
+```php
+define('FS_METHOD', 'direct');
+```
+This will force WordPress to use a direct method of accessing the file system, bypassing FTP.
+
 # Structure
 
 ```bash
