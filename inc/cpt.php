@@ -7,7 +7,7 @@ if (! defined("ABSPATH")) {
 
 function chip_theme_post_types()
 {
-    $labels = array(
+    $labels = [
         'name'               => _x('Events', 'Post Type General Name', 'chip-wp-theme'),
         'singular_name'      => _x('Event', 'Post Type Singular Name', 'chip-wp-theme'),
         'menu_name'          => __('Events', 'chip-wp-theme'),
@@ -21,13 +21,14 @@ function chip_theme_post_types()
         'search_items'       => __('Search Events', 'chip-wp-theme'),
         'not_found'          => __('Not found', 'chip-wp-theme'),
         'not_found_in_trash' => __('Not found in Trash', 'chip-wp-theme'),
-    );
-    $args = array(
+    ];
+    $args = [
         'label'               => __('event', 'chip-wp-theme'),
         'description'         => __('Event news and reviews', 'chip-wp-theme'),
+        'rewrite'             => ['slug' => 'events'],
         'labels'              => $labels,
-        'supports'            => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',),
-        'taxonomies'          => array('category', 'post_tag'),
+        'supports'            => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields',],
+        'taxonomies'          => ['category', 'post_tag'],
         'hierarchical'        => false,
         'public'              => true,
         'show_ui'             => true,
@@ -41,6 +42,6 @@ function chip_theme_post_types()
         'publicly_queryable'  => true,
         'capability_type'     => 'post',
         'show_in_rest'        => true, // Guttenberg
-    );
+    ];
     register_post_type('event', $args);
 }
