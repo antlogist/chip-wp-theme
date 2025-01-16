@@ -18,6 +18,8 @@ include(get_template_directory() . '/inc/customizer.php');
 // REST menu
 include(get_template_directory() . '/inc/REST/rest_menu.php');
 
+include(get_template_directory() . '/inc/cpt.php');
+
 /*===HOOKS===*/
 // Theme features
 add_action('after_setup_theme', 'chip_theme_support');
@@ -54,3 +56,36 @@ function custom_excerpt_more($more)
   return '... <a href="' . get_permalink() . '" class="small"><br><span class="d-inline-block mt-2">Read more</span></a>';
 }
 add_filter('excerpt_more', 'custom_excerpt_more');
+
+// Register custom post types
+add_action('init', 'chip_theme_post_types');
+
+if (!function_exists('dd')) {
+  function dd(...$vars)
+  {
+    foreach ($vars as $var) {
+      var_dump($var);
+    }
+    die(1);
+  }
+}
+
+add_action('pre_get_posts', 'event_adjust_queries');
+
+function event_adjust_queries($query)
+{
+  if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
+    $today = date('Y-m-d H:i:s');
+
+    $query->set('meta_key', 'event_date');
+    $query->set('orderby', 'meta_value');
+    $query->set('order', 'ASC');
+    $query->set('meta_query', [
+      [
+        'key' => 'event_date',
+        'compare' => '>',
+        'value' => $today
+      ]
+    ]);
+  }
+}
