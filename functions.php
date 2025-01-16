@@ -60,12 +60,32 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 // Register custom post types
 add_action('init', 'chip_theme_post_types');
 
-
 if (!function_exists('dd')) {
-  function dd(...$vars) {
-      foreach ($vars as $var) {
-          var_dump($var);
-      }
-      die(1);
+  function dd(...$vars)
+  {
+    foreach ($vars as $var) {
+      var_dump($var);
+    }
+    die(1);
+  }
+}
+
+add_action('pre_get_posts', 'event_adjust_queries');
+
+function event_adjust_queries($query)
+{
+  if (!is_admin() && is_post_type_archive('event') && $query->is_main_query()) {
+    $today = date('Y-m-d H:i:s');
+
+    $query->set('meta_key', 'event_date');
+    $query->set('orderby', 'meta_value');
+    $query->set('order', 'ASC');
+    $query->set('meta_query', [
+      [
+        'key' => 'event_date',
+        'compare' => '>',
+        'value' => $today
+      ]
+    ]);
   }
 }
