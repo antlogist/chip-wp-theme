@@ -59,3 +59,13 @@ add_filter('excerpt_more', 'custom_excerpt_more');
 
 // Register custom post types
 add_action('init', 'chip_theme_post_types');
+
+
+if (!function_exists('dd')) {
+  function dd(...$vars) {
+      foreach ($vars as $var) {
+          var_dump($var);
+      }
+      die(1);
+  }
+}
