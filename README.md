@@ -89,6 +89,18 @@ define('FS_METHOD', 'direct');
 ```
 This will force WordPress to use a direct method of accessing the file system, bypassing FTP.
 
+# Add dd-like helper function to WordPress theme
+```php
+if (!function_exists('dd')) {
+  function dd(...$vars) {
+      foreach ($vars as $var) {
+          var_dump($var);
+      }
+      die(1);
+  }
+}
+```
+
 # Structure
 
 ```bash
