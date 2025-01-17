@@ -24,7 +24,7 @@ To establish relationships between the `event` and `program` post types, the Adv
 | Event       | hasMany           | Programs          |
 | Program     | belongsTo         | Event             |
 
-## An example of implementing a relationship using the ACF plugin
+## Examples of implementing a relationship using the ACF plugin
 
 This code retrieves related programs through ACF, loops over them, and outputs linked titles within a wrapper.
 
@@ -45,6 +45,32 @@ if ($related_programs) { ?>
     </div>
 <?php
 } ?>
+```
+
+This code fetches upcoming events associated with the current program ID, where the event date is after today.
+
+```php
+$today = date('Y-m-d H:i:s');
+
+$upcoming_events = new WP_Query([
+    'post_type' => 'event',
+    'posts_per_page' => -1,
+    'meta_key' => 'event_date',
+    'orderby' => 'meta_value',
+    'order' => 'ASC',
+    'meta_query' => [
+        [
+            'key' => 'event_date',
+            'compare' => '>',
+            'value' => $today
+        ],
+        [
+            'key' => 'related_programs',
+            'compare' => 'LIKE',
+            'value' => '"' . get_the_ID() . '"'
+        ]
+    ]
+]);
 ```
 
 # Website menu
