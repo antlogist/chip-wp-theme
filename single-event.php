@@ -43,6 +43,7 @@ get_header();
                             ?>
 
                             <p><?php the_content(); ?></p>
+                            <?php get_template_part('template-parts/events/program', 'list'); ?>
                     <?php
                         endwhile;
                     endif; ?>

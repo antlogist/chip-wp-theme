@@ -22,8 +22,30 @@ To establish relationships between the `event` and `program` post types, the Adv
 | Post type   | Type of relations | Related post type |
 |-------------|-------------------|-------------------|
 | Event       | hasMany           | Programs          |
+| Program     | belongsTo         | Event             |
 
+## An example of implementing a relationship using the ACF plugin
 
+This code retrieves related programs through ACF, loops over them, and outputs linked titles within a wrapper.
+
+```php
+<?php
+$related_programs = get_field('related_programs');
+
+if ($related_programs) { ?>
+    <div class="post-wrapper">
+        <h2>Related Program(s)</h2>
+        <?php
+        foreach ($related_programs as $related_program) {
+            $permalink = get_the_permalink($related_program);
+            $title = get_the_title($related_program);
+            echo sprintf('<p><a href="%s">%s</a></p>', esc_url($permalink), esc_html($title));
+        }
+        ?>
+    </div>
+<?php
+} ?>
+```
 
 # Website menu
 
