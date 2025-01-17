@@ -14,7 +14,7 @@ get_template_part('template-parts/pagebuttons', 'basic');
     <div class="row">
       <div class="col-md-12">
         <div class="post-wrapper">
-          <?php get_template_part('template-parts/events/eventlist', 'basic'); ?>
+          <?php get_template_part('template-parts/events/event', 'list'); ?>
         </div>
       </div>
     </div>

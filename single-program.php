@@ -12,7 +12,7 @@ get_header();
     <div class="content-wrapper pt-3">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= get_post_type_archive_link('event') ?>">Events</a></li>
+                <li class="breadcrumb-item"><a href="<?= get_post_type_archive_link('program') ?>">Programs</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php the_title() ?></li>
             </ol>
         </nav>
@@ -43,10 +43,11 @@ get_header();
                             ?>
 
                             <p><?php the_content(); ?></p>
-                            <?php get_template_part('template-parts/events/program', 'list'); ?>
                     <?php
                         endwhile;
                     endif; ?>
+
+                    <?php get_template_part('template-parts/events/event-of-program', ''); ?>
                 </div>
             </div>
         </div>
