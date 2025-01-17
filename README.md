@@ -15,6 +15,16 @@
 - Text Domain: chiptheme
 - Use it to make something cool, have fun, and share what you've learned with others.
 
+# Relations
+
+To establish relationships between the `event` and `program` post types, the Advanced Custom Fields (ACF) plugin is utilized.
+
+| Post type   | Type of relations | Related post type |
+|-------------|-------------------|-------------------|
+| Event       | hasMany           | Programs          |
+
+
+
 # Website menu
 
 To display menus, the REST API is utilized. The endpoints are as follows:
