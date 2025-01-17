@@ -46,6 +46,8 @@ get_header();
                     <?php
                         endwhile;
                     endif; ?>
+
+                    <?php get_template_part('template-parts/events/event-of-program', ''); ?>
                 </div>
             </div>
         </div>
