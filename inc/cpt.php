@@ -42,6 +42,7 @@ function chip_theme_post_types()
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'event',
+        'map_meta_cap'        => true,
         'show_in_rest'        => true, // Guttenberg
     ];
     register_post_type('event', $event_args);
@@ -81,6 +82,7 @@ function chip_theme_post_types()
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
         'capability_type'     => 'program',
+        'map_meta_cap'        => true,
         'show_in_rest'        => true, // Guttenberg
     ];
     register_post_type('program', $program_args);
