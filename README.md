@@ -1,4 +1,4 @@
-# Old School WordPress Theme
+# WordPress Theme
 
 - Theme Name: Chip theme
 - Theme URI: https://github.com/antlogist/chip-wp-theme
@@ -80,7 +80,9 @@ To display menus, the REST API is utilized. The endpoints are as follows:
 - Header menu: `/wp-json/menus/v1/menu`
 - Footer menu: `/wp-json/menus/v1/footer`
 
-In order for the menus to appear, you need to create menus named "header" and "footer" in the admin panel.
+In order for the menus to appear, you need to create menus named "header" and "footer" in the admin panel. 
+
+[More about the website navigation.](base-knowledge/architecture/nav-rest.md)
 
 # A little bit about the REST API
 
@@ -159,70 +161,55 @@ if (!function_exists('dd')) {
 }
 ```
 
-# Structure
+# Architecture
+
+The theme follows a standard WordPress architecture with essential templates like `archive.php`, `single.php`, and `page.php`. It includes specific templates for events (`archive-event.php`, `single-event.php`) and programs (`archive-program.php`, `single-program.php`). The `inc` directory contains various classes, custom post types, and customization files. Additionally, there are folders for REST API integration, mailing functionality, and template parts for reusable components.
 
 ```bash
+tree -I 'node_modules|images|resources|base-knowledge|dist|*.json|webpack*'
+
 .
-├── dist
-│   ├── css
-│   │   ├── all.css
-│   │   ├── all.min.css
-│   │   ├── libs.css
-│   │   └── libs.min.css
-│   └── js
-│       ├── all.js
-│       ├── all.js.LICENSE.txt
-│       ├── all.min.js
-│       ├── theme-customize.js
-│       └── theme-customize.min.js
+├── archive-event.php
+├── archive.php
+├── archive-program.php
 ├── footer.php
 ├── front-page.php
 ├── functions.php
 ├── header.php
 ├── inc
-│   ├── Classes
-│   │   ├── CSRFToken.php
-│   │   └── Session.php
-│   ├── customizer.php
-│   ├── enqueue.php
-│   ├── mail
-│   │   └── mail.php
-│   ├── REST
-│   │   └── rest_menu.php
-│   └── setup.php
+│   ├── Classes
+│   │   ├── CSRFToken.php
+│   │   └── Session.php
+│   ├── cpt.php
+│   ├── customizer.php
+│   ├── enqueue.php
+│   ├── mail
+│   │   └── mail.php
+│   ├── REST
+│   │   └── rest_menu.php
+│   └── setup.php
 ├── index.php
-├── package.json
+├── page-past-events.php
 ├── page.php
 ├── README.md
-├── resources
-│   └── assets
-│       ├── js
-│       │   ├── baseObject.js
-│       │   ├── buttons
-│       │   │   └── buttons.js
-│       │   ├── carousel
-│       │   │   └── carousel.js
-│       │   ├── Classes
-│       │   │   ├── Mail.js
-│       │   │   ├── Modal.js
-│       │   │   ├── Mouse.js
-│       │   │   └── Request.js
-│       │   ├── customization
-│       │   │   └── theme-customize.js
-│       │   ├── init.js
-│       │   ├── nav
-│       │   │   └── nav.js
-│       │   └── wpcf7
-│       │       └── wpcf7.js
-│       └── sass
-│           ├── app.scss
-│           └── libs.scss
+├── screenshot.png
+├── single-event.php
 ├── single.php
+├── single-program.php
 ├── style.css
-├── template-parts
-│   ├── frontbuttons-basic.php
-│   ├── frontbuttons-subscr.php
-│   ├── pagebuttons-basic.php
-│   └── recentnews-basic.php
-└── webpack.mix.js
+└── template-parts
+    ├── childpages-basic.php
+    ├── events
+    │   ├── event-list.php
+    │   ├── event-of-program.php
+    │   └── program-list.php
+    ├── frontbuttons-basic.php
+    ├── frontbuttons-subscr.php
+    ├── pagebuttons-basic.php
+    ├── parentpages-basic.php
+    ├── recentnews-basic.php
+    └── recentnews-query.php
+
 ```
+
+[More about the project architecture.](base-knowledge/architecture/architecture.md)
