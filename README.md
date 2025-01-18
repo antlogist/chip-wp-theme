@@ -79,6 +79,8 @@ $upcoming_events = new WP_Query([
 ]);
 ```
 
+[More about the ACF plugin.](base-knowledge/tools/acf.md)
+
 # Website menu
 
 To display menus, the REST API is utilized. The endpoints are as follows:
