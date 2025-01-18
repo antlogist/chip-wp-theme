@@ -15,6 +15,12 @@
 - Text Domain: chiptheme
 - Use it to make something cool, have fun, and share what you've learned with others.
 
+# Deployment
+
+The YAML file is used to deploy a local WordPress development environment using Docker Compose. It defines three services: wordpress, db (MySQL), and phpmyadmin. The wordpress service uses the official WordPress image, exposes port 80, and mounts a local directory for the WordPress files. The db service uses MySQL version 8.4.3, exposes port 3306, and stores data in a mounted volume. The phpmyadmin service provides a web interface for managing MySQL databases on port 8080. All services are connected via a custom wordpress network.
+
+[More about the website development environment.](base-knowledge/deployment/docker.md)
+
 # Relations
 
 To establish relationships between the `event` and `program` post types, the Advanced Custom Fields (ACF) plugin is utilized.
