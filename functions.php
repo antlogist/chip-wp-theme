@@ -118,3 +118,11 @@ function hide_admin_bar()
     show_admin_bar(false);
   }
 }
+
+// Login page
+add_filter('login_headerurl', 'login_header_url');
+
+function login_header_url()
+{
+  return esc_url(site_url('/'));
+}
