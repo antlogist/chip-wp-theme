@@ -97,3 +97,14 @@ function event_adjust_queries($query)
     ]);
   }
 }
+
+add_action('admin_init', 'redirect_to_home_after_login');
+
+function redirect_to_home_after_login()
+{
+  $user = wp_get_current_user();
+  if (is_user_logged_in() && $user->roles[0] === 'subscriber') {
+    wp_redirect('/');
+    exit;
+  }
+}
