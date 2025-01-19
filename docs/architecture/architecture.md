@@ -3,7 +3,7 @@
 The theme follows a standard WordPress architecture with essential templates like `archive.php`, `single.php`, and `page.php`. It includes specific templates for events (`archive-event.php`, `single-event.php`) and programs (`archive-program.php`, `single-program.php`). The `inc` directory contains various classes, custom post types, and customization files. Additionally, there are folders for REST API integration, mailing functionality, and template parts for reusable components.
 
 ```bash
-tree -I 'node_modules|images|resources|base-knowledge|dist|*.json|webpack*'
+tree -I 'node_modules|images|resources|docs|dist|*.json|webpack*'
 
 .
 ├── archive-event.php

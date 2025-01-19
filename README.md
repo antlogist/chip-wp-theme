@@ -19,7 +19,7 @@
 
 The YAML file is used to deploy a local WordPress development environment using Docker Compose. It defines three services: wordpress, db (MySQL), and phpmyadmin. The wordpress service uses the official WordPress image, exposes port 80, and mounts a local directory for the WordPress files. The db service uses MySQL version 8.4.3, exposes port 3306, and stores data in a mounted volume. The phpmyadmin service provides a web interface for managing MySQL databases on port 8080. All services are connected via a custom wordpress network.
 
-[More about the website development environment.](base-knowledge/deployment/docker.md)
+[More about the website development environment.](docs/deployment/docker.md)
 
 # Relations
 
@@ -79,7 +79,7 @@ $upcoming_events = new WP_Query([
 ]);
 ```
 
-[More about the ACF plugin.](base-knowledge/tools/acf.md)
+[More about the ACF plugin.](docs/tools/acf.md)
 
 # Website menu
 
@@ -90,7 +90,7 @@ To display menus, the REST API is utilized. The endpoints are as follows:
 
 In order for the menus to appear, you need to create menus named "header" and "footer" in the admin panel. 
 
-[More about the website navigation.](base-knowledge/architecture/nav-rest.md)
+[More about the website navigation.](docs/architecture/nav-rest.md)
 
 # A little bit about the REST API
 
@@ -174,7 +174,7 @@ if (!function_exists('dd')) {
 The theme follows a standard WordPress architecture with essential templates like `archive.php`, `single.php`, and `page.php`. It includes specific templates for events (`archive-event.php`, `single-event.php`) and programs (`archive-program.php`, `single-program.php`). The `inc` directory contains various classes, custom post types, and customization files. Additionally, there are folders for REST API integration, mailing functionality, and template parts for reusable components.
 
 ```bash
-tree -I 'node_modules|images|resources|base-knowledge|dist|*.json|webpack*'
+tree -I 'node_modules|images|resources|docs|dist|*.json|webpack*'
 
 .
 ├── archive-event.php
@@ -220,4 +220,4 @@ tree -I 'node_modules|images|resources|base-knowledge|dist|*.json|webpack*'
 
 ```
 
-[More about the project architecture.](base-knowledge/architecture/architecture.md)
+[More about the project architecture.](docs/architecture/architecture.md)
