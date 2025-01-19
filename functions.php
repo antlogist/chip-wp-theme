@@ -32,6 +32,7 @@ add_action('wp_head', 'add_viewport_meta_tag', '1');
 
 // Styles and scrpts
 add_action('wp_enqueue_scripts', 'chip_styles_and_scripts');
+add_action('login_enqueue_scripts', 'login_styles');
 
 // Theme customizer
 add_action('customize_register', 'chip_customize_register');
@@ -125,4 +126,20 @@ add_filter('login_headerurl', 'login_header_url');
 function login_header_url()
 {
   return esc_url(site_url('/'));
+}
+
+add_filter('login_headertitle', function () {
+
+  return get_bloginfo('name');
+});
+
+add_action('login_head', 'change_login_logo');
+
+function change_login_logo()
+{
+  echo '<style>
+	#login h1 a{
+		background-image : url(' . get_stylesheet_directory_uri() . '/images/logo.png);
+	}
+	</style>';
 }
