@@ -108,3 +108,13 @@ function redirect_to_home_after_login()
     exit;
   }
 }
+
+add_action('wp_loaded', 'hide_admin_bar');
+
+function hide_admin_bar()
+{
+  $user = wp_get_current_user();
+  if (is_user_logged_in() && $user->roles[0] === 'subscriber') {
+    show_admin_bar(false);
+  }
+}
