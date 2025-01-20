@@ -2,11 +2,51 @@
 
 $color: #ffd300;
 
-body {
-  background-color: black;
+@mixin body-dark {
+  background-color: #444;
   font-family: 'Raleway', sans-serif;
   background-size: cover;
   background-attachment: fixed;
+}
+
+@mixin navbar-light {
+  color: #444;
+  background-color: #fff;
+
+  a {
+    color: #444;
+  }
+}
+
+@mixin navbar-dark {
+  color: #fff;
+  background-color: #444;
+
+  a {
+    color: #fff;
+  }
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.grid {
+  content: " ";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background-color: red;
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: 101;
+}
+
+.body {
+  &--dark {
+    @include body-dark();
+  }
 }
 
 a {
@@ -31,9 +71,10 @@ a {
 // Header
 
 header {
-  background: -webkit-linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
-  background: -o-linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
-  background: linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
+  @include body-dark();
+  // background: -webkit-linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
+  // background: -o-linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
+  // background: linear-gradient(rgba(36, 36, 36, 1) 0%, rgba(1, 1, 1, 1) 100%);
 
   .container {
     position: relative;
@@ -113,6 +154,21 @@ header {
 }
 
 // Nav
+.navbar {
+  z-index: 100;
+  &--light {
+    @include navbar-light();
+  }
+
+  &--dark {
+    @include navbar-dark();
+  }
+
+  .logo {
+    height: 35px;
+  }
+}
+
 nav#navMain {
   display: block;
   position: relative;
@@ -273,17 +329,17 @@ nav#navMain {
 
 // Carousel
 #frontPageCarousel {
-  border-bottom: 1px solid beige;
+  // border-bottom: 1px solid beige;
 
   .carousel-item {
     background-color: black;
   }
 }
 
-.carousel {
-  background-color: #fff;
-  padding: 14px 14px 4px 14px;
-}
+// .carousel {
+//   background-color: #fff;
+//   padding: 14px 14px 4px 14px;
+// }
 
 #frontCards {
   .row {
