@@ -1,10 +1,6 @@
-<?php
+# Capabilities
 
-//Exit if accessed directly
-if (! defined("ABSPATH")) {
-    exit;
-}
-
+```php
 function chip_theme_post_types()
 {
     // Event post type
@@ -87,47 +83,5 @@ function chip_theme_post_types()
     ];
     register_post_type('program', $program_args);
 }
+```
 
-function add_event_caps_to_admin()
-{
-    // gets the administrator role
-    $role = get_role('administrator');
-    $capabilities = array(
-        'edit_events',
-        'edit_others_events',
-        'delete_events',
-        'publish_events',
-        'read_private_events',
-        'delete_private_events',
-        'delete_published_events',
-        'delete_others_events',
-        'edit_private_events',
-        'edit_published_events',
-    );
-    foreach ($capabilities as $cap) {
-        $role->add_cap($cap);
-    }
-}
-add_action('admin_init', 'add_event_caps_to_admin');
-
-function add_program_caps_to_admin()
-{
-    // gets the administrator role
-    $role = get_role('administrator');
-    $capabilities = array(
-        'edit_programs',
-        'edit_others_programs',
-        'delete_programs',
-        'publish_programs',
-        'read_private_programs',
-        'delete_private_programs',
-        'delete_published_programs',
-        'delete_others_programs',
-        'edit_private_programs',
-        'edit_published_programs',
-    );
-    foreach ($capabilities as $cap) {
-        $role->add_cap($cap);
-    }
-}
-add_action('admin_init', 'add_program_caps_to_admin');
