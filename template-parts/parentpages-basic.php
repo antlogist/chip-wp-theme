@@ -11,18 +11,19 @@ foreach ($parent_ids as $id) {
     ];
 
     if (count($parent_pages) > 0) {
-    } ?>
+?>
 
-    <div class="recent-posts-wrapper mb-2">
-        <div class="inner-wrapper">
-            <b>Parent</b> pages
-            <ul id="recentPosts" class="ul-recent-posts">
-                <?php
-                foreach ($parent_pages as $page) {
-                    echo '<li class="li-recent-post"><a class="recent-post-title" href="' . $page['link'] . '">' . $page['title'] . '</a></li>';
-                }
-                ?>
-            </ul>
+        <div class="recent-posts-wrapper mb-2">
+            <div class="inner-wrapper">
+                <b>Parent</b> pages
+                <ul id="recentPosts" class="ul-recent-posts">
+                    <?php
+                    foreach ($parent_pages as $page) {
+                        echo '<li class="li-recent-post"><a class="recent-post-title" href="' . $page['link'] . '">' . $page['title'] . '</a></li>';
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
-    </div>
-<? }
+<?php }
+}
