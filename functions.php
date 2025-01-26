@@ -153,3 +153,7 @@ function change_login_logo()
 	}
 	</style>';
 }
+
+add_action('wp_mail_failed', function ($error) {
+  App\Logging\MailErrorLogger::logToStandardFile($error);
+});
