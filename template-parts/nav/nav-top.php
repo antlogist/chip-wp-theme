@@ -21,7 +21,7 @@
                     </svg>
                 </a>
                 <!-- / logout link -->
-            <? } else { ?>
+            <?php } else { ?>
                 <!-- login link -->
                 <a class="d-flex align-items-center" id="loginHref" href="<?= wp_login_url(); ?>" title="login">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
