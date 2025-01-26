@@ -5,6 +5,17 @@ if (! defined('ABSPATH')) {
   exit;
 }
 
+function my_autoloader($class_name)
+{
+  $path = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);
+  $file_path = get_template_directory() . "/inc/$path.php";
+
+  if (file_exists($file_path)) {
+    include_once $file_path;
+  }
+}
+spl_autoload_register('my_autoloader');
+
 /*===INCLUDES===*/
 // Theme features
 include(get_template_directory() . '/inc/setup.php');
@@ -128,8 +139,7 @@ function login_header_url()
   return esc_url(site_url('/'));
 }
 
-add_filter('login_headertitle', function () {
-
+add_filter('login_headetext', function () {
   return get_bloginfo('name');
 });
 
