@@ -171,6 +171,17 @@ if (!function_exists('dd')) {
 
 # Architecture
 
+The WordPress architecture uses class auto-initialization, which downloads classes from the inc/App folder automatically when the application is launched. This allows the application to load the necessary classes dynamically when they are required, which improves performance and memory management.
+
+```bash
+inc/
+├── App
+│   └── Logging
+│       ├── LoggerInterface.php
+│       └── MailErrorLogger.php
+
+```
+
 The theme follows a standard WordPress architecture with essential templates like `archive.php`, `single.php`, and `page.php`. It includes specific templates for events (`archive-event.php`, `single-event.php`) and programs (`archive-program.php`, `single-program.php`). The `inc` directory contains various classes, custom post types, and customization files. Additionally, there are folders for REST API integration, mailing functionality, and template parts for reusable components.
 
 ```bash
