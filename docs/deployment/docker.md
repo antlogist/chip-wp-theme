@@ -13,6 +13,10 @@ wordpress:
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG_DISPLAY: 1
+      WORDPRESS_DEBUG_LOG: 1
+      WORDPRESS_MAIL_FROM: test@test.test
     volumes:
       - ./wordpress:/var/www/html
     networks:
@@ -42,6 +46,14 @@ wordpress:
       - PMA_ARBITRARY=1
     networks:
       - wordpress
+
+  mailpit:
+    image: 'axllent/mailpit:latest'
+    ports:
+        - '${FORWARD_MAILPIT_PORT:-1025}:1025'
+        - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
+    networks:
+        - wordpress
 
 networks:
   wordpress:
