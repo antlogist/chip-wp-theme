@@ -157,3 +157,7 @@ function change_login_logo()
 add_action('wp_mail_failed', function ($error) {
   App\Logging\MailErrorLogger::logToStandardFile($error);
 });
+
+add_filter('wp_mail_from', function ($email) {
+  return WP_MAIL_FROM;
+});
