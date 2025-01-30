@@ -1,0 +1,16 @@
+@import './body-mixins';
+
+.body {
+
+    &--light {
+        @include body-light();
+    }
+
+    &--dark {
+        @include body-dark();
+    }
+
+    &--primary {
+        @include body-primary();
+    }
+}

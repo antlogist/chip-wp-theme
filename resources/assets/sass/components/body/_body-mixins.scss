@@ -1,0 +1,28 @@
+@import '../../mixins/colors';
+
+@mixin body-light {
+    color: $dark-color;
+    background-color: $light-color;
+
+    a {
+        color: $dark-color;
+    }
+}
+
+@mixin body-dark {
+    color: $light-color;
+    background-color: $dark-color;
+
+    a {
+        color: $light-color;
+    }
+}
+
+@mixin body-primary {
+    color: $dark-color;
+    background-color: $primary-color;
+
+    a {
+        color: $dark-color;
+    }
+}
