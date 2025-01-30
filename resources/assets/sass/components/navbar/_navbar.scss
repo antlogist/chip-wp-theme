@@ -1,0 +1,78 @@
+@import './../../mixins/flex';
+@import './navbar-mixins';
+
+.navbar {
+    line-height: 0;
+    @include flex-justify(flex-start);
+
+    a {
+        text-decoration: none;
+    }
+
+    &--light {
+        @include navbar-light();
+    }
+
+    &--dark {
+        @include navbar-dark();
+    }
+
+    &--transparent {
+        @include navbar-transparent();
+    }
+
+    &--primary {
+        @include navbar-primary();
+    }
+
+    // Flex
+    &__wrapper,
+    &__actions-col {
+        @include flex-justify(flex-start);
+
+        &--flex-center {
+            @include flex-justify(center);
+        }
+
+        &--flex-end {
+            @include flex-justify(flex-end);
+        }
+
+        &--flex-between {
+            @include flex-justify(space-between);
+        }
+
+        &--flex-around {
+            @include flex-justify(space-around);
+        }
+    }
+
+    // Logo
+    &__logo {
+        height: 50px;
+        width: 50px;
+
+        &--circle {
+            border-radius: 50%;
+        }
+
+        &--square {
+            border-radius: 0;
+        }
+    }
+
+    &__avatar {
+        height: 50px;
+        width: 50px;
+        margin-right: 1rem;
+
+        &--circle {
+            border-radius: 50%;
+        }
+
+        &--square {
+            border-radius: 0;
+        }
+    }
+
+}

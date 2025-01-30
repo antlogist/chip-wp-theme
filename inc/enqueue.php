@@ -8,7 +8,7 @@ if (! defined('ABSPATH')) {
 function chip_styles_and_scripts()
 {
   //libs CSS
-  wp_enqueue_style('overlap-lib-css', get_theme_file_uri('dist/css/libs.min.css'));
+  // wp_enqueue_style('overlap-lib-css', get_theme_file_uri('dist/css/libs.min.css'));
 
   //custom CSS
   wp_enqueue_style('overlap-app-css', get_theme_file_uri('dist/css/all.min.css'), NULL, microtime());
