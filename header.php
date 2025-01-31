@@ -21,3 +21,16 @@ if (! defined("ABSPATH")) {
   <header>
     <?php get_template_part('template-parts/nav/nav', 'top'); ?>
   </header>
+
+  <?php
+  if (has_nav_menu('header')) {
+    wp_nav_menu(
+      array(
+        'theme_location' => 'header',
+        'container'      => false,
+        'menu_class'     => 'header-menu',
+        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+      )
+    );
+  }
+  ?>
